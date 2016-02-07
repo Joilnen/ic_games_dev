@@ -19,13 +19,14 @@ function checkCollision(x1,y1,w1,h1, x2,y2,w2,h2)
          y2 < y1+h1
 end
 
-
 function love.load()
     game_load()
 end
 
 function love.draw()
-	love.graphics.draw(snake_body[0], sn_x, sn_y)
+    for i = 1,#snake_body do
+	    love.graphics.draw(snake_body[i], sn_x + (i - 1) * 16, sn_y)
+    end
 	love.graphics.draw(point, p_x, p_y)
 end
 

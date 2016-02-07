@@ -1,3 +1,8 @@
+function grow_snake()
+    table.insert(snake_body_pos_list, 1, {sn_x, sn_y})
+    table.insert(snake_body, love.graphics.newImage(figs_dir .. 'sn.png'))
+end
+
 function game_update() 
 	if orientation['up'] then	
 		sn_y = sn_y - 16
@@ -28,6 +33,7 @@ function game_update()
 	if(checkCollision(sn_x, sn_y, 16, 16, p_x, p_y, 16, 16)) then
 		p_x = math.random(0, width -16)
 		p_y = math.random(0, height - 16)
+        grow_snake()
 	end
 end
 
