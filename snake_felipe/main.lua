@@ -1,43 +1,14 @@
-Snake = {
-	criar = function (image, x, y)
-		local o = {image, x, y}
-		love.graphics.draw(image, x, y)	
-		o.x = x
-		o.y = y
-		
-		function o:getX()		
-			return o.x
-		end
-		function o:getY()			
-			return o.y
-		end
-		function o:setX(x)
-			print("mudei o valor " .. o.x .. " para " .. x)			
-			o.x = x			
-		end
-		function o:setY(y)
-			self.y = y
-		end
-		function o:clone()
-			local clone = Snake.criar(o.image, o.x, o.y)
-			return clone
-		end
-		
-		return o	
-	end
-}
-
 snake_body = {}
 
 
-sn_x = 200
-sn_y = 300
+sn_x = 32
+sn_y = 32
 size = 0
 x = {}
 y = {}
 
-width = 600
-height = 500
+width = 480
+height = 480
 
 p_x = 300
 p_y = 400
@@ -67,15 +38,13 @@ function love.load()
 	 
 	
 	point = love.graphics.newImage('point.png')
-	 love.window.setMode( width, height )
+	love.window.setMode( width, height )
 end
 
 
 
 function love.draw()
-	--love.graphics.draw(snake_body[0], x[0], y[0])
-	Sn = Snake.criar(snake_body[0], sn_x, sn_y)
-	Sn2 = Snake.criar(snake_body[0], Sn:getX()+10, Sn:getY()+10)
+	love.graphics.draw(snake_body[0], sn_x, sn_y)
 	love.graphics.draw(point, p_x, p_y)
 end
 
@@ -105,19 +74,16 @@ end
 
 function love.update(dt)
 	
-	if cima == 1 then	
-		Sn:setX(Sn.getX() +1)
-		print(Sn:getX())
-	elseif baixo == 1 and y[0] < height - 16 then
-		y[0] = y[0] + 16
-		sleep(0.5)
-	elseif esquerda == 1 and x[0] > 0 then		
-		x[0] = x[0] - 16
-		sleep(0.5)
-	elseif direita == 1 and x[0] < width - 16 then
-		x[0] = x[0] + 16
-		sleep(0.5)
+	if cima == 1 and sn_y > 0 then	
+		sn_y = sn_y - 16
+	elseif baixo == 1 and sn_y < height - 16 then
+		sn_y = sn_y + 16
+	elseif esquerda == 1 and sn_x > 0 then		
+		sn_x = sn_x - 16
+	elseif direita == 1 and sn_x < width - 16 then
+		sn_x = sn_x + 16
 	end
+	sleep(0.2)
 	--print("x0 " .. x[0] .. " y0" .. y[0])
 
 	if(checkCollision(sn_x, sn_y, 16, 16, p_x, p_y, 16, 16)) then
