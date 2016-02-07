@@ -49,6 +49,10 @@ function love.draw()
 end
 
 function love.keypressed(k)
+    if k == 'escape' then
+        love.event.quit()
+    end
+
 	if k == "up" and baixo ~= 1 then
 		cima = 1
 		baixo = 0
