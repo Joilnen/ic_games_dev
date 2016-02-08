@@ -4,3 +4,5 @@ function show_lost()
     love.graphics.setFont(font2)
     love.graphics.print('space pra continuar', width / 2 - 60, height/2 + 40)
 end
+
+
