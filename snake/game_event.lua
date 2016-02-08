@@ -4,6 +4,10 @@ function change_orientation(k)
 end
 
 function treat_keyboard(k)
+    if lost_flag and k == 'space' then
+        reset_game()
+    end
+
     if k == 'escape' then
         love.event.quit()
     end

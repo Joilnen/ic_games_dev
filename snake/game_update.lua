@@ -17,7 +17,22 @@ function grow_snake(o)
     sn_body_list_count = sn_body_list_count + 1
 end
 
+function check_if_lost(list)
+    if #list < 2 then
+        return false
+    end
+
+    for i = 2,#list do
+        if check_collision(list[1]['x'], list[1]['y'], 16, 16,
+                          list[i]['x'], list[i]['y'], 16, 16) then
+            return true
+        end
+    end
+    return false
+end
+
 function game_update() 
+
 
 
 	if orientation['up'] then	
@@ -52,14 +67,20 @@ function game_update()
         bcount = 1
     end
 
+    if check_if_lost(snake_body_pos_list) then 
+        lost_flag = true
+    end
+
+
 	sleep(0.2)
 	-- print("x0 " .. x[0] .. " y0" .. y[0])
 
-	if(checkCollision(sn_x, sn_y, 16, 16, p_x, p_y, 16, 16)) then
+	if(check_collision(sn_x, sn_y, 16, 16, p_x, p_y, 16, 16)) then
 		p_x = math.random(0, width -16)
 		p_y = math.random(0, height - 16)
         grow_snake(orientation)
 	end
+
 end
 
 

@@ -1,7 +1,10 @@
 function game_load()
+    font1 = love.graphics.newFont('fonts/Marker Felt.ttf', 36)
+    font2 = love.graphics.newFont('fonts/Marker Felt.ttf', 20)
 
     snake_body = {}
     snake_body_pos_list = {}
+    lost_flag = false
 
     width = 480
     height = 480
@@ -31,4 +34,13 @@ function game_load()
 	love.window.setMode(width, height )
 end
 
+function reset_game()
+    snake_body_pos_list = {}
+    lost_flag = false
 
+    sn_x = math.abs(width / 16) * 8
+    sn_y = math.abs(height / 16) * 8 
+
+    snake_body_pos_list[1] = {x = sn_x, y = sn_y}
+    sn_body_list_count = 1
+end
