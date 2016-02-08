@@ -1,6 +1,7 @@
 function game_load()
 
     snake_body = {}
+    snake_body_pos_list = {}
 
     width = 480
     height = 480
@@ -18,16 +19,16 @@ function game_load()
         left = nil,
         right = nil
     }
-    
+ 
     figs_dir = 'figs/'
 
     clock = os.clock
 	love.window.setTitle("Snake v1.0")
 	snake_body[1] = love.graphics.newImage(figs_dir .. 'sn.png')
-    snake_body_pos_list = {}
-    table.insert(snake_body_pos_list,{sn_x, sn_y})
+    snake_body_pos_list[1] = {x = sn_x, y = sn_y}
 
 	point = love.graphics.newImage(figs_dir .. 'point.png')
 	love.window.setMode(width, height )
 end
+
 

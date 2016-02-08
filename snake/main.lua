@@ -24,8 +24,11 @@ function love.load()
 end
 
 function love.draw()
-    for i = 1,#snake_body do
-	    love.graphics.draw(snake_body[i], sn_x + (i - 1) * 16, sn_y)
+    -- for i = 1,#snake_body do
+    for i = 1, #snake_body do
+	    love.graphics.draw(snake_body[i], 
+             snake_body_pos_list[i]['x'] + (i - 1) * 16, 
+             snake_body_pos_list[i]['y'])
     end
 	love.graphics.draw(point, p_x, p_y)
 end
