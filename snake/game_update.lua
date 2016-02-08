@@ -1,3 +1,6 @@
+sn_body_list_count = 1
+local bcount = 1
+
 function grow_snake(o)
 
     if o['up'] then
@@ -10,15 +13,13 @@ function grow_snake(o)
         table.insert(snake_body_pos_list, {x = sn_x - 16, y = sn_y})
     end
 
-    for i = 1,#snake_body_pos_list do
-        print(snake_body_pos_list[i]['x'])
-        print(snake_body_pos_list[i]['y'])
-    end
-
-    table.insert(snake_body, love.graphics.newImage(figs_dir .. 'sn.png'))
+    -- table.insert(snake_body, love.graphics.newImage(figs_dir .. 'sn.png'))
+    sn_body_list_count = sn_body_list_count + 1
 end
 
 function game_update() 
+
+
 	if orientation['up'] then	
 		sn_y = sn_y - 16
 	elseif orientation['down'] then
@@ -41,8 +42,15 @@ function game_update()
         sn_y = 0 
     end
 
-    snake_body_pos_list[1]['x'] = sn_x
-    snake_body_pos_list[1]['y'] = sn_y
+    if bcount <= sn_body_list_count then
+        snake_body_pos_list[bcount]['x'] = sn_x
+        snake_body_pos_list[bcount]['y'] = sn_y
+        bcount = bcount + 1
+    end
+
+    if bcount > sn_body_list_count then
+        bcount = 1
+    end
 
 	sleep(0.2)
 	-- print("x0 " .. x[0] .. " y0" .. y[0])
