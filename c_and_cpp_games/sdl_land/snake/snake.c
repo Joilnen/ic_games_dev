@@ -24,7 +24,15 @@ int main()
 
     SDL_RenderClear(renderer);
     SDL_RenderPresent(renderer);
-    SDL_Delay(5000);
+    SDL_Event e;
+    while(1) {
+        if(SDL_PollEvent(&e)) {
+            if(e.type == SDL_QUIT)
+                break;
+            if(e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE)
+                break;
+        }
+    }
     SDL_Quit();
 
     return 0;
