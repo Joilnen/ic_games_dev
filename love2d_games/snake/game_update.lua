@@ -23,17 +23,25 @@ function check_if_lost(list)
     end
 
     for i = 2,#list do
-        if check_collision(list[1]['x'], list[1]['y'], 16, 16,
-                          list[i]['x'], list[i]['y'], 16, 16) then
+        if check_collision_improved(list[1]['x'], list[1]['y'], 16, 16,
+                       list[i]['x'], list[i]['y'], 16, 16) then
             return true
         end
+    end
+
+    for i = 1, #list do
+        print ('list[' .. i .. '][\'x\'] = ' .. list[i]['x'])
+        print ('list[' .. i .. '][\'y\'] = ' .. list[i]['y'])
     end
     return false
 end
 
+function check_collision_improved(x1, y1, w1, h1, x2, y2, w2, h2)
+    return x1 + w1 / 2 > x2 and x1 + w1 / 2 < x2  + w2 and
+           y1 + h1 / 2 > y2 and y1 + h1 / 2 < y2  + h2
+end
+
 function game_update() 
-
-
 
 	if orientation['up'] then	
 		sn_y = sn_y - 16
