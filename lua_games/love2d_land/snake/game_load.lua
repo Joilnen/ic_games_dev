@@ -27,11 +27,14 @@ function game_load()
 
     clock = os.clock
 	love.window.setTitle("Snake v1.0")
-	snake_body[1] = love.graphics.newImage(figs_dir .. 'sn.png')
+	snake_body = love.graphics.newImage(figs_dir .. 'sn.png')
     snake_body_pos_list[1] = {x = sn_x, y = sn_y}
 
 	point = love.graphics.newImage(figs_dir .. 'point.png')
 	love.window.setMode(width, height )
+
+    time_lapse = 0
+    time_update_limit = .2
 end
 
 function reset_game()
@@ -44,3 +47,5 @@ function reset_game()
     snake_body_pos_list[1] = {x = sn_x, y = sn_y}
     sn_body_list_count = 1
 end
+
+

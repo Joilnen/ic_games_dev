@@ -8,11 +8,6 @@ require 'game_update'
 require 'game_load'
 require 'game_lost'
 
-function sleep(n)  -- seconds
-    local t0 = clock()
-    while clock() - t0 <= n do end
-end
-
 function check_collision(x1, y1, w1, h1, x2, y2, w2, h2)
     return x1 < x2+w2 and
          x2 < x1 + w1 and
@@ -30,7 +25,7 @@ function love.draw()
         show_lost()
     else
         for i = 1,sn_body_list_count do
-            love.graphics.draw(snake_body[1], 
+            love.graphics.draw(snake_body, 
                  snake_body_pos_list[i]['x'], 
                  snake_body_pos_list[i]['y'])
         end
@@ -43,7 +38,11 @@ function love.keypressed(k)
 end
 
 function love.update(dt)
-    game_update()	
+    if time_lapse > time_update_limit then 
+        game_update()
+        time_lapse =  dt
+    end
+    time_lapse = time_lapse + dt
 end
 
 

@@ -1,10 +1,33 @@
 #include <SDL2/SDL.h>
 #include <stdlib.h>
 
+typedef struct Snake {
+    int x, y;
+
+
+} Snake;
+
+void game_exit() {
+    SDL_Quit();
+}
+
+void get_event(unsigned int *r) {
+
+    SDL_Event e;
+
+    if(SDL_PollEvent(&e)) {
+        if(e.type == SDL_QUIT)
+            *r = 0;
+        if(e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE)
+            *r = 0;
+    }
+}
+
 int main()
 {
     SDL_Window *window = NULL;
     SDL_Renderer *renderer = NULL;
+    unsigned int run = 1;
 
     if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER))
         exit(-1);
@@ -24,15 +47,11 @@ int main()
 
     SDL_RenderClear(renderer);
     SDL_RenderPresent(renderer);
-    SDL_Event e;
-    while(1) {
-        if(SDL_PollEvent(&e)) {
-            if(e.type == SDL_QUIT)
-                break;
-            if(e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE)
-                break;
-        }
+
+    while(run) {
+        get_event(&run);
     }
+
     SDL_Quit();
 
     return 0;

@@ -18,7 +18,8 @@ function grow_snake(o)
 end
 
 function check_if_lost(list)
-    if #list < 2 then
+    -- if #list < 2 then
+    if sn_body_list_count < 2 then
         return false
     end
 
@@ -79,8 +80,6 @@ function game_update()
         lost_flag = true
     end
 
-
-	sleep(0.2)
 	-- print("x0 " .. x[0] .. " y0" .. y[0])
 
 	if(check_collision(sn_x, sn_y, 16, 16, p_x, p_y, 16, 16)) then
@@ -88,7 +87,6 @@ function game_update()
 		p_y = math.random(0, height - 16)
         grow_snake(orientation)
 	end
-
 end
 
 
