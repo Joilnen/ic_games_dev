@@ -2,7 +2,6 @@ function game_load()
     font1 = love.graphics.newFont('fonts/Marker Felt.ttf', 36)
     font2 = love.graphics.newFont('fonts/Marker Felt.ttf', 20)
 
-    snake_body = {}
     snake_body_pos_list = {}
     lost_flag = false
 

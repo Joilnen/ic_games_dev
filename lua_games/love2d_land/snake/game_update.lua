@@ -1,8 +1,9 @@
 sn_body_list_count = 1
 local bcount = 1
 
-function grow_snake(o)
+function grow_snake()
 
+    --[[ Algoithm wrong beginer's mistake
     if o['up'] then
         table.insert(snake_body_pos_list, {x = sn_x, y = sn_y + 16})
     elseif o['down'] then 
@@ -12,8 +13,9 @@ function grow_snake(o)
     else
         table.insert(snake_body_pos_list, {x = sn_x - 16, y = sn_y})
     end
+    ]]
 
-    -- table.insert(snake_body, love.graphics.newImage(figs_dir .. 'sn.png'))
+    table.insert(snake_body_pos_list, {x = sn_x, y = sn_y})
     sn_body_list_count = sn_body_list_count + 1
 end
 
@@ -30,10 +32,6 @@ function check_if_lost(list)
         end
     end
 
-    -- for i = 1, #list do
-    --     print ('list[' .. i .. '][\'x\'] = ' .. list[i]['x'])
-    --     print ('list[' .. i .. '][\'y\'] = ' .. list[i]['y'])
-    -- end
     return false
 end
 
@@ -80,12 +78,11 @@ function game_update()
         lost_flag = true
     end
 
-	-- print("x0 " .. x[0] .. " y0" .. y[0])
 
 	if(check_collision(sn_x, sn_y, 16, 16, p_x, p_y, 16, 16)) then
 		p_x = math.random(0, width -16)
 		p_y = math.random(0, height - 16)
-        grow_snake(orientation)
+        grow_snake()
 	end
 end
 

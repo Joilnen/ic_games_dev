@@ -7,6 +7,7 @@ require 'game_event'
 require 'game_update'
 require 'game_load'
 require 'game_lost'
+require 'game_draw'
 
 function check_collision(x1, y1, w1, h1, x2, y2, w2, h2)
     return x1 < x2+w2 and
@@ -21,16 +22,7 @@ end
 
 function love.draw()
     -- for i = 1,#snake_body do
-    if lost_flag then
-        show_lost()
-    else
-        for i = 1,sn_body_list_count do
-            love.graphics.draw(snake_body, 
-                 snake_body_pos_list[i]['x'], 
-                 snake_body_pos_list[i]['y'])
-        end
-        love.graphics.draw(point, p_x, p_y)
-    end
+    game_draw()
 end
 
 function love.keypressed(k)
