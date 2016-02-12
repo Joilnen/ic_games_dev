@@ -5,6 +5,11 @@
 #include "event.h"
 #include "draw.h"
 
+Uint32 get_draw_tick(Uint32 i, void *p) {
+    printf("Timer wake up\n");
+    return 1;
+}
+
 int main()
 {
     SDL_Window *window = NULL;
@@ -35,6 +40,8 @@ int main()
 
     Cookie *cookie = create_cookie();
     init_cookie(renderer, cookie);
+
+    SDL_TimerID id_timer = SDL_AddTimer(5345, get_draw_tick, NULL);
 
     while(run) {
         draw_snake(renderer, snake);

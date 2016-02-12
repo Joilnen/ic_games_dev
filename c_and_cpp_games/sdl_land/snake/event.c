@@ -9,11 +9,13 @@ static void game_exit() {
 void get_event(Snake *s, unsigned int *r) {
 
     SDL_Event e;
+    const Uint8* keyState = SDL_GetKeyboardState(NULL);
 
     if(SDL_PollEvent(&e)) {
         if(e.type == SDL_QUIT)
             *r = 0;
-        if(e.type == SDL_KEYUP) {
+
+        if(e.type == SDL_KEYDOWN) {
             switch(e.key.keysym.sym) {
                 case SDLK_ESCAPE:
                    *r = 0;
@@ -31,6 +33,11 @@ void get_event(Snake *s, unsigned int *r) {
                     s->move = RIGHT;
             }
         }
+
+        if(e.type == SDL_KEYUP) {
+            s->move = NONE;
+        }
+
     }
 }
 
