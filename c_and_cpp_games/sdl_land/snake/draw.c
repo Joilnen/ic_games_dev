@@ -16,6 +16,12 @@ void draw_snake(SDL_Renderer *r, Snake *s) {
         s->rect.x += s->step;
     }
 
+    if(s->rect.y < 0) s->rect.y = 480;
+    if(s->rect.y > 480) s->rect.y = 0;
+    if(s->rect.x < 0) s->rect.x = 480;
+    if(s->rect.x > 480) s->rect.x = 0;
+
     SDL_RenderFillRect(r, &s->rect);
 }
+
 

@@ -33,11 +33,6 @@ void get_event(Snake *s, unsigned int *r) {
                     s->move = RIGHT;
             }
         }
-
-        if(e.type == SDL_KEYUP) {
-            s->move = NONE;
-        }
-
     }
 }
 

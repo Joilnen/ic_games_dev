@@ -15,6 +15,8 @@ int main()
     SDL_Window *window = NULL;
     SDL_Renderer *renderer = NULL;
     unsigned int run = 1;
+    Uint32 currenttime, lasttime;
+    currenttime = lasttime = SDL_GetTicks();
 
     if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER))
         exit(-1);
@@ -44,11 +46,18 @@ int main()
     SDL_TimerID id_timer = SDL_AddTimer(5345, get_draw_tick, NULL);
 
     while(run) {
-        draw_snake(renderer, snake);
-        draw_cookie(renderer, cookie);
+        currenttime += SDL_GetTicks();
+
         get_event(snake, &run);
-        // SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-        // SDL_RenderClear(renderer);
+        if(currenttime - lasttime > 40000) {
+            SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+            SDL_RenderClear(renderer);
+            draw_snake(renderer, snake);
+            draw_cookie(renderer, cookie);
+            // SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+            // SDL_RenderClear(renderer);
+            lasttime = currenttime;
+        }
         SDL_RenderPresent(renderer);
     }
 
