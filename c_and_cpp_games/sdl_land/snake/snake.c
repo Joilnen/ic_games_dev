@@ -3,9 +3,36 @@
 
 typedef struct Snake {
     int x, y;
-
-
+    SDL_Rect rect;
 } Snake;
+
+Snake *create_snake() {
+
+    Snake *s = (Snake*) malloc(sizeof(Snake));
+    if(s)
+        return s;
+
+    return NULL;
+}
+
+void delete_snake(Snake *s) {
+
+
+}
+
+void create_body(SDL_Renderer *r, Snake *s) {
+    s->x = 200;
+    s->y = 200;
+    s->rect.w = 16;
+    s->rect.h = 16;
+}
+
+void draw_snake(SDL_Renderer *r, Snake *s) {
+    SDL_SetRenderDrawColor(r, 255, 255, 255, 255);
+    s->rect.x = s->x;
+    s->rect.y = s->y;
+    SDL_RenderFillRect(r, &s->rect);
+}
 
 void game_exit() {
     SDL_Quit();
@@ -48,8 +75,15 @@ int main()
     SDL_RenderClear(renderer);
     SDL_RenderPresent(renderer);
 
+    Snake *snake = create_snake();
+    create_body(renderer, snake);
+
     while(run) {
+        draw_snake(renderer, snake);
         get_event(&run);
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+        SDL_RenderClear(renderer);
+        SDL_RenderPresent(renderer);
     }
 
     SDL_Quit();
