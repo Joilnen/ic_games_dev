@@ -2,22 +2,8 @@
 #include <stdlib.h>
 #include "snake.h"
 #include "cookie.h"
-
-void game_exit() {
-    SDL_Quit();
-}
-
-void get_event(unsigned int *r) {
-
-    SDL_Event e;
-
-    if(SDL_PollEvent(&e)) {
-        if(e.type == SDL_QUIT)
-            *r = 0;
-        if(e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE)
-            *r = 0;
-    }
-}
+#include "event.h"
+#include "draw.h"
 
 int main()
 {
@@ -45,8 +31,7 @@ int main()
     SDL_RenderPresent(renderer);
 
     Snake *snake = create_snake();
-    init_body(renderer, snake);
-
+    init_snake(renderer, snake);
 
     Cookie *cookie = create_cookie();
     init_cookie(renderer, cookie);
@@ -54,7 +39,7 @@ int main()
     while(run) {
         draw_snake(renderer, snake);
         draw_cookie(renderer, cookie);
-        get_event(&run);
+        get_event(snake, &run);
         // SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         // SDL_RenderClear(renderer);
         SDL_RenderPresent(renderer);

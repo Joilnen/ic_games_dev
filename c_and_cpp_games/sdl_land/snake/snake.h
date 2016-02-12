@@ -1,9 +1,13 @@
 #ifndef SNAKE_H
 #define SNAKE_H
 
+enum move { NONE, UP, DOWN, LEFT, RIGHT};
+
 typedef struct Snake {
     int x, y;
     SDL_Rect rect;
+    enum move move;
+    unsigned short step;
 } Snake;
 
 Snake *create_snake();
