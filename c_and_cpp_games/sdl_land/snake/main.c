@@ -43,13 +43,13 @@ int main()
     Cookie *cookie = create_cookie();
     init_cookie(renderer, cookie);
 
-    SDL_TimerID id_timer = SDL_AddTimer(5345, get_draw_tick, NULL);
+    // SDL_TimerID id_timer = SDL_AddTimer(5345, get_draw_tick, NULL);
 
     while(run) {
         currenttime += SDL_GetTicks();
 
         get_event(snake, &run);
-        if(currenttime - lasttime > 40000) {
+        if(currenttime - lasttime > 400000) {
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
             SDL_RenderClear(renderer);
             draw_snake(renderer, snake);
