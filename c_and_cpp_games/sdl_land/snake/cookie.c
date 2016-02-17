@@ -12,8 +12,8 @@ Cookie *create_cookie() {
 }
 
 void init_cookie(SDL_Renderer *r, Cookie *s) {
-    s->rect.x = s->x = 300;
-    s->rect.y = s->y = 200;
+    s->rect.x = 300;
+    s->rect.y = 200;
     s->rect.w = 16;
     s->rect.h = 16;
 }

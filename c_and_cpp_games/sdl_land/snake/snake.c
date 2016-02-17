@@ -15,8 +15,8 @@ void delete_snake(Snake *s) {
 }
 
 void init_snake(SDL_Renderer *r, Snake *s) {
-    s->rect.x = s->x = 200;
-    s->rect.y = s->y = 200;
+    s->rect.x = 200;
+    s->rect.y = 200;
     s->rect.w = 16;
     s->rect.h = 16;
     s->move = NONE;

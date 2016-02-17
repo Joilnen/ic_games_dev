@@ -4,6 +4,7 @@
 #include "cookie.h"
 #include "event.h"
 #include "draw.h"
+#include "init.h"
 
 Uint32 get_draw_tick(Uint32 i, void *p) {
     printf("Timer wake up\n");
@@ -12,53 +13,36 @@ Uint32 get_draw_tick(Uint32 i, void *p) {
 
 int main()
 {
-    SDL_Window *window = NULL;
-    SDL_Renderer *renderer = NULL;
+    GameScreen g;
     unsigned int run = 1;
     Uint32 currenttime, lasttime;
     currenttime = lasttime = SDL_GetTicks();
-
-    if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER))
-        exit(-1);
-    atexit(SDL_Quit);
-
-    window = SDL_CreateWindow("Snake",
-            SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-            480, 480, SDL_WINDOW_SHOWN);
-
-    if(!window)
-        exit(-1);
-    else
-        renderer = SDL_CreateRenderer(window, -1, 0);
-    if(!renderer)
-        exit(-1);
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-
-    SDL_RenderClear(renderer);
-    SDL_RenderPresent(renderer);
+    
+    gamescreen_init(&g);
 
     Snake *snake = create_snake();
-    init_snake(renderer, snake);
+    init_snake(g.renderer, snake);
 
     Cookie *cookie = create_cookie();
-    init_cookie(renderer, cookie);
+    init_cookie(g.renderer, cookie);
 
     // SDL_TimerID id_timer = SDL_AddTimer(5345, get_draw_tick, NULL);
 
+    lasttime = currenttime = 0;
     while(run) {
+        get_event(snake, &run);
         currenttime += SDL_GetTicks();
 
-        get_event(snake, &run);
-        if(currenttime - lasttime > 400000) {
-            SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-            SDL_RenderClear(renderer);
-            draw_snake(renderer, snake);
-            draw_cookie(renderer, cookie);
+        if(SDL_TICKS_PASSED(currenttime, lasttime)) {
+            draw_snake(g.renderer, snake);
+            draw_cookie(g.renderer, cookie);
             // SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
             // SDL_RenderClear(renderer);
-            lasttime = currenttime;
+            lasttime = currenttime + 100000000;
+            SDL_RenderPresent(g.renderer);
+            SDL_SetRenderDrawColor(g.renderer, 0, 0, 0, 255);
+            SDL_RenderClear(g.renderer);
         }
-        SDL_RenderPresent(renderer);
     }
 
     SDL_Quit();
