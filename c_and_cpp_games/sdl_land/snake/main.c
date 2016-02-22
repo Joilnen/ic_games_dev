@@ -28,17 +28,20 @@ int main()
 
     // SDL_TimerID id_timer = SDL_AddTimer(5345, get_draw_tick, NULL);
 
-    lasttime = currenttime = 0;
+    lasttime = currenttime = SDL_GetTicks();
+    lasttime = 1000 * 1000;
     while(run) {
         get_event(snake, &run);
         currenttime += SDL_GetTicks();
+
+        printf("ticks %ul\n", SDL_GetTicks());
 
         if(SDL_TICKS_PASSED(currenttime, lasttime)) {
             draw_snake(g.renderer, snake);
             draw_cookie(g.renderer, cookie);
             // SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
             // SDL_RenderClear(renderer);
-            lasttime = currenttime + 100000000;
+            lasttime = currenttime + 10 * 1000;
             SDL_RenderPresent(g.renderer);
             SDL_SetRenderDrawColor(g.renderer, 0, 0, 0, 255);
             SDL_RenderClear(g.renderer);
