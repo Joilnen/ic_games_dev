@@ -21,7 +21,6 @@ function love.load()
 end
 
 function love.draw()
-    -- for i = 1,#snake_body do
     game_draw()
 end
 
