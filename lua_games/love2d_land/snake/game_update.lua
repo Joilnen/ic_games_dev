@@ -1,14 +1,12 @@
 local bcount = 1
 
 local function grow_snake()
-    table.insert(snake_body_pos_list, {x = sn_x, y = sn_y})
+    -- table.insert(snake_body_pos_list, {x = sn_x, y = sn_y})
+    table.insert(snake_body_pos_list,
+                   {x = snake_body_pos_list[#snake_body_pos_list]['x'],
+                    y = snake_body_pos_list[#snake_body_pos_list]['y']})
     sn_body_list_count = #snake_body_pos_list
 end
-
-local function check_collision_improved(x1, y1, w1, h1, x2, y2, w2, h2)
-    return x1 == x2 and y1 == y2
-end
-
 
 function check_if_lost(list)
     if #list <= 2 then
@@ -16,14 +14,21 @@ function check_if_lost(list)
         return false
     end
 
-    for i = 3,#list do
-        if check_collision_improved(list[1]['x'], list[1]['y'], size_xy, size_xy,
-                       list[i]['x'], list[i]['y'], size_xy, size_xy) then
-            print('A ' .. list[1]['x'] .. ' ' .. list[1]['y'])
-            print('B '.. i .. '--' .. list[i]['x'] .. ' ' .. list[i]['y'])
+    print('--Checa cobra--')
+    for i = 3,#list - 1 do
+        -- if check_collision_improved(list[1]['x'], list[1]['y'], size_xy, size_xy,
+        --                list[i]['x'], list[i]['y'], size_xy, size_xy) then
+        --     print('A ' .. list[1]['x'] .. ' ' .. list[1]['y'])
+        --     print('B '.. i .. '--' .. list[i]['x'] .. ' ' .. list[i]['y'])
+        --     return true
+        -- end
+        print ('tile 1 [x] = ' .. list[1]['x'] .. ' [y] = ' .. list[1]['y'] ..' tile 2 [x] = ' .. list[i]['x'] .. ' [y] = ' .. list[i]['y'])
+        if list[1]['x'] == list[i]['x'] and list[1]['y'] == list[i]['y'] then 
             return true
         end
     end
+    print('-- --')
+    print()
     return false
 end
 
@@ -61,19 +66,36 @@ function game_update()
         bcount = 1
     end
 
-	if(check_collision_improved(sn_x, sn_y, size_xy, size_xy, p_x, p_y, size_xy, size_xy)) then
+	if sn_x == p_x and sn_y == p_y then
 		p_x = math.random(1, math.abs(width / size_xy) - 2)
 		p_y = math.random(1, math.abs(height / size_xy) - 2)
         grow_snake()
-    elseif check_if_lost(snake_body_pos_list) then 
-       lost_flag = true
-    end
+    -- ELseif check_if_lost(snake_body_pos_list) then 
+    --    lost_flag = true
+    else
+        if #snake_body_pos_list < 5 then
+            return
+        end
 
-    print("Cobra\n")
-    for i = 1,#snake_body_pos_list do
-        print(i .. ": " .. snake_body_pos_list[i]['x'] .. "  " .. snake_body_pos_list[i]['y'])
+        print('--Checa cobra--')
+        local list = snake_body_pos_list
+        for i = #list,2 do
+            -- if check_collision_improved(list[1]['x'], list[1]['y'], size_xy, size_xy,
+            --                list[i]['x'], list[i]['y'], size_xy, size_xy) then
+            --     print('A ' .. list[1]['x'] .. ' ' .. list[1]['y'])
+            --     print('B '.. i .. '--' .. list[i]['x'] .. ' ' .. list[i]['y'])
+            --     return true
+            -- end
+            print ('tile 1 [x] = ' .. list[1]['x'] .. ' [y] = ' .. list[1]['y'] ..' tile 2 [x] = ' .. list[i]['x'] .. ' [y] = ' .. list[i]['y'])
+            for j = i - 1,1 do
+                if list[1]['x'] == list[j]['x'] and list[1]['y'] == list[j]['y'] then 
+                    lost_flag = true
+                    -- return true
+                end
+            end
+        end
     end
-    print("---\n")
+    print('-- --')
 
 end
 

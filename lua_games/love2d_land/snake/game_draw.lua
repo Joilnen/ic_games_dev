@@ -2,7 +2,7 @@ function game_draw()
     if lost_flag then
         show_lost()
     else
-        for i = 1,sn_body_list_count do
+        for i = 1,#snake_body_pos_list do
             love.graphics.draw(snake_body, 
                  snake_body_pos_list[i]['x'] * size_xy, 
                  snake_body_pos_list[i]['y'] * size_xy)
