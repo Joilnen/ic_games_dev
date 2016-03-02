@@ -1,6 +1,8 @@
 function game_draw()
     if lost_flag then
         show_lost()
+    elseif paused_flag then
+        show_pause()
     else
         for i = 1,#snake_body_pos_list do
             love.graphics.draw(snake_body, 

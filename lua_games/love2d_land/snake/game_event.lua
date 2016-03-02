@@ -6,6 +6,8 @@ end
 function treat_keyboard(k)
     if lost_flag and k == 'space' then
         reset_game()
+    elseif k == 'space' then
+        paused_flag = not paused_flag
     end
 
     if k == 'escape' then

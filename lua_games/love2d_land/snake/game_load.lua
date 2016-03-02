@@ -8,6 +8,7 @@ function game_load()
     sn_body_list_count = 1
 
     lost_flag = false
+    paused_flag = false
 
     width = 480
     height = 480
