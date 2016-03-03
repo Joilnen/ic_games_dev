@@ -1,4 +1,5 @@
-local bcount = 1
+bcount = 1
+local last = {}
 
 local function grow_snake()
     -- table.insert(snake_body_pos_list, {x = sn_x, y = sn_y})
@@ -8,16 +9,31 @@ local function grow_snake()
     sn_body_list_count = #snake_body_pos_list
 end
 
-function check_if_lost(list)
+function shallowcopy(orig)
 
-    if #list < 5 then
+    local orig_type = type(orig)
+    local copy
+    if orig_type == 'table' then
+        copy = {}
+        for orig_key, orig_value in pairs(orig) do
+            copy[orig_key] = orig_value
+        end
+    else -- number, string, boolean, etc
+        copy = orig
+    end
+    return copy
+end
+
+function check_if_lost(x, y, list)
+
+    if #list < 2 then
         return false
     end
 
     print('--Checa cobra--')
-    for i = 5,#list do
-        print ('tile 1 [x] = ' .. list[1]['x'] .. ' [y] = ' .. list[1]['y'] ..' tile 2 [x] = ' .. list[i]['x'] .. ' [y] = ' .. list[i]['y'])
-        if list[1]['x'] == list[i]['x'] and list[1]['y'] == list[i]['y'] then
+    for i, v in ipairs(list) do
+        print ('head_index [x] = ' .. list[head_index]['x'] .. ' [y] = ' .. list[head_index]['y'] ..' tile 2 [x] = ' .. v['x'] .. ' [y] = ' .. v['y'] .. " head # " .. head_index)
+        if v ~= last and v['x'] == x and v['y'] == y then
             return true
         end
     end
@@ -56,6 +72,7 @@ function game_update()
     if bcount <= sn_body_list_count then
         snake_body_pos_list[bcount]['x'] = sn_x
         snake_body_pos_list[bcount]['y'] = sn_y
+        last = snake_body_pos_list[bcount]
         bcount = bcount + 1
     end
 
@@ -69,8 +86,8 @@ function game_update()
         grow_snake()
     elseif #snake_body_pos_list < 3 then
         return
-    elseif check_if_lost(snake_body_pos_list) then
-            lost_flag = true
+    elseif check_if_lost(sn_x, sn_y, snake_body_pos_list) then
+        lost_flag = true
     end
 end
 

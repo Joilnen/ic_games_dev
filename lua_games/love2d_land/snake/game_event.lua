@@ -1,6 +1,8 @@
+head_index = 1
 function change_orientation(k)
     for ch, v in pairs(orientation) do orientation[ch] = false end
     orientation[k] = true
+    head_index = bcount
 end
 
 function treat_keyboard(k)
