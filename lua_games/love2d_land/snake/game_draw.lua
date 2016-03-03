@@ -11,6 +11,9 @@ function game_draw()
         end
         love.graphics.draw(point, p_x * size_xy, p_y * size_xy)
     end
+    love.graphics.draw(snake_border, 0, 0)
+    love.graphics.setFont(score_font)
+    love.graphics.print(score, 10, 0)
 end
 
 

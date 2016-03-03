@@ -1,4 +1,4 @@
-bcount = 1
+local bcount = 1
 local last = {}
 
 local function grow_snake()
@@ -26,19 +26,15 @@ end
 
 function check_if_lost(x, y, list)
 
-    if #list < 2 then
+    if #list < 5 then
         return false
     end
 
-    print('--Checa cobra--')
     for i, v in ipairs(list) do
-        print ('head_index [x] = ' .. list[head_index]['x'] .. ' [y] = ' .. list[head_index]['y'] ..' tile 2 [x] = ' .. v['x'] .. ' [y] = ' .. v['y'] .. " head # " .. head_index)
         if v ~= last and v['x'] == x and v['y'] == y then
             return true
         end
     end
-    print('-- --')
-    print()
     return false
 end
 
@@ -63,10 +59,10 @@ function game_update()
         sn_x = 1
     end
 
-    if sn_y < 1 then
+    if sn_y < 2 then
         sn_y = 28
     elseif sn_y > 28 then
-        sn_y = 1
+        sn_y = 2
     end
 
     if bcount <= sn_body_list_count then
@@ -82,10 +78,12 @@ function game_update()
 
     if sn_x == p_x and sn_y == p_y then
         p_x = math.random(1, math.abs(width / size_xy) - 2)
-        p_y = math.random(1, math.abs(height / size_xy) - 2)
+        p_y = math.random(2, math.abs(height / size_xy) - 2)
         grow_snake()
-    elseif #snake_body_pos_list < 3 then
-        return
+        score = score + 1
+        if score > 999999 then
+            score = 0
+        end
     elseif check_if_lost(sn_x, sn_y, snake_body_pos_list) then
         lost_flag = true
     end
