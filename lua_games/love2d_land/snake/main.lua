@@ -1,6 +1,6 @@
 --[[
-    Snake 
-    Autorer Joilnen
+    Snake
+    Autor: Joilnen
 --]]
 
 require 'game_event'
