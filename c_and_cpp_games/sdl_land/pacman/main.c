@@ -15,9 +15,7 @@ int main()
 {
     GameScreen g;
     unsigned int run = 1;
-    Uint32 currenttime, lasttime;
-    currenttime = lasttime = SDL_GetTicks();
-    
+
     gamescreen_init(&g);
 
     Pacman *pacman = create_pacman();
@@ -28,24 +26,15 @@ int main()
 
     // SDL_TimerID id_timer = SDL_AddTimer(5345, get_draw_tick, NULL);
 
-    lasttime = currenttime = SDL_GetTicks();
-    lasttime = 1000 * 1000;
     while(run) {
         get_event(pacman, &run);
-        currenttime += SDL_GetTicks();
-
-        printf("ticks %ul\n", SDL_GetTicks());
-
-        if(SDL_TICKS_PASSED(currenttime, lasttime)) {
-            draw_pacman(g.renderer, pacman);
-            draw_gost(g.renderer, gost);
-            // SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-            // SDL_RenderClear(renderer);
-            lasttime = currenttime + 10 * 1000;
-            SDL_RenderPresent(g.renderer);
-            SDL_SetRenderDrawColor(g.renderer, 0, 0, 0, 255);
-            SDL_RenderClear(g.renderer);
-        }
+        draw_pacman(g.renderer, pacman);
+        draw_gost(g.renderer, gost);
+        // SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+        // SDL_RenderClear(renderer);
+        SDL_RenderPresent(g.renderer);
+        SDL_SetRenderDrawColor(g.renderer, 0, 0, 0, 255);
+        SDL_RenderClear(g.renderer);
     }
 
     SDL_Quit();
