@@ -5,20 +5,20 @@ void update(SDL_Renderer *r, Pacman *p) {
 
     Uint32 d = get_elapsed_time();
     // printf("%d\n", d);
-    float delta = d * 0.007;
+    float delta = d * 0.0001;
     printf("%f\n", p->step * delta);
 
     if(p->move == UP) {
         p->rect.y -= (p->step * delta);
     }
     if(p->move == DOWN) {
-        p->rect.y += (p->step * delta);
+        p->rect.y += (1 + p->step * delta);
     }
     if(p->move == LEFT) {
         p->rect.x -= (p->step * delta);
     }
     if(p->move == RIGHT) {
-        p->rect.x += (p->step * delta);
+        p->rect.x += (1 + p->step * delta);
     }
     printf("X %d  Y %d\n", p->rect.x, p->rect.y);
 
