@@ -7,7 +7,7 @@ void gamescreen_init(GameScreen *g) {
 
     g->window = SDL_CreateWindow("Snake",
             SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-            480, 480, SDL_WINDOW_SHOWN);
+            width, height, SDL_WINDOW_SHOWN);
 
     if(!g->window)
         exit(-1);

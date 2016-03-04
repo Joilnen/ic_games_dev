@@ -24,3 +24,8 @@ void init_pacman(SDL_Renderer *r, Pacman *s) {
 }
 
 
+void main_loop() {
+
+
+}
+

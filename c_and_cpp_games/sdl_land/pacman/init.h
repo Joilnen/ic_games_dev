@@ -2,6 +2,7 @@
 #define INIT_H
 
 #include <SDL2/SDL.h>
+#include "defs.h"
 
 typedef struct GameScreen {
     SDL_Window *window;

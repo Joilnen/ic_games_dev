@@ -2,5 +2,6 @@
 #define DEFS_H
 
 #define DT_ELAPSED_LIMIT 100
+#define WIDTH 
 
 #endif
