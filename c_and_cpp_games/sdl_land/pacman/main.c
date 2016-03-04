@@ -6,6 +6,8 @@
 #include "draw.h"
 #include "init.h"
 #include "update.h"
+#include "timer.h"
+#include "defs.h"
 
 Uint32 get_draw_tick(Uint32 i, void *p) {
     printf("Timer wake up\n");
@@ -16,6 +18,7 @@ int main()
 {
     GameScreen g;
     unsigned int run = 1;
+    Uint32 lasttime, nowtime, dt = DT_ELAPSED_LIMIT;
 
     gamescreen_init(&g);
 
@@ -27,9 +30,14 @@ int main()
 
     // SDL_TimerID id_timer = SDL_AddTimer(5345, get_draw_tick, NULL);
 
+    lasttime = nowtime = get_elapsed_time();
     while(run) {
+        nowtime += get_elapsed_time();
         get_event(pacman, &run);
-        update(g.renderer, pacman);
+        if(nowtime - lasttime > dt) {
+            update(g.renderer, pacman);
+            lasttime = nowtime;
+        }
         draw_pacman(g.renderer, pacman);
         draw_gost(g.renderer, gost);
         // SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
