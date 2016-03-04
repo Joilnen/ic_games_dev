@@ -5,6 +5,7 @@
 #include "event.h"
 #include "draw.h"
 #include "init.h"
+#include "update.h"
 
 Uint32 get_draw_tick(Uint32 i, void *p) {
     printf("Timer wake up\n");
@@ -28,6 +29,7 @@ int main()
 
     while(run) {
         get_event(pacman, &run);
+        update(g.renderer, pacman);
         draw_pacman(g.renderer, pacman);
         draw_gost(g.renderer, gost);
         // SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
