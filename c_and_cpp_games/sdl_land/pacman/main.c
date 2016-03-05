@@ -35,8 +35,6 @@ int main()
         nowtime += get_elapsed_time();
         draw_pacman(g.renderer, pacman);
         draw_ghost(g.renderer, ghost);
-        // SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-        // SDL_RenderClear(renderer);
         SDL_RenderPresent(g.renderer);
         SDL_SetRenderDrawColor(g.renderer, 0, 0, 0, 255);
         SDL_RenderClear(g.renderer);
