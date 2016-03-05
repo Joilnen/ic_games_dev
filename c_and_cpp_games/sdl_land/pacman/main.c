@@ -1,7 +1,7 @@
 #include <SDL2/SDL.h>
 #include <stdlib.h>
 #include "pacman.h"
-#include "gost.h"
+#include "ghost.h"
 #include "event.h"
 #include "draw.h"
 #include "init.h"
@@ -25,8 +25,8 @@ int main()
     Pacman *pacman = create_pacman();
     init_pacman(g.renderer, pacman);
 
-    Gost *gost = create_gost();
-    init_gost(g.renderer, gost);
+    Ghost *ghost = create_ghost();
+    init_ghost(g.renderer, ghost);
 
     // SDL_TimerID id_timer = SDL_AddTimer(5345, get_draw_tick, NULL);
 
@@ -35,11 +35,11 @@ int main()
         nowtime += get_elapsed_time();
         get_event(pacman, &run);
         if(nowtime - lasttime > dt) {
-            update(g.renderer, pacman);
+            update(g.renderer, pacman, ghost);
             lasttime = nowtime;
         }
         draw_pacman(g.renderer, pacman);
-        draw_gost(g.renderer, gost);
+        draw_ghost(g.renderer, ghost);
         // SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         // SDL_RenderClear(renderer);
         SDL_RenderPresent(g.renderer);

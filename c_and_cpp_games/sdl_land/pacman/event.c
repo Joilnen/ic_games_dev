@@ -33,6 +33,7 @@ void get_event(Pacman *s, unsigned int *r) {
                     s->move = RIGHT;
             }
         }
+        else s->move = NONE;
     }
 }
 

@@ -3,8 +3,9 @@
 
 #include <SDL2/SDL.h>
 #include "pacman.h"
+#include "ghost.h"
 
-void update(SDL_Renderer*, Pacman *);
+void update(SDL_Renderer*, Pacman *, Ghost *);
 
 #endif
 
