@@ -1,0 +1,41 @@
+# map with 62 x 37
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+                                                             o 
+ P                                                        *  o
+oooooooo  oooooooooooooooo  o                                o 
+       o  o              o  o                                o
+       o  o              o  o                                o
+       o  o              o  o                                o
+       o  o              o  o                                o
+       o  o            ooo  ooo                              o
+       o  o            o      o
+       o* o            o G    o
+       o  o            oooooooo
+oooooooo                         
+o
+o Y
+oooooooo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

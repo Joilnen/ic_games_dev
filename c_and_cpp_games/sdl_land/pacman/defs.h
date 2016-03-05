@@ -5,4 +5,7 @@
 #define WIDTH  992
 #define HEIGHT 592
 
+#define MAP_WIDTH  62
+#define MAP_HEIGH  37
+
 #endif
