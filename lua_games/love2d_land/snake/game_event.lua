@@ -14,13 +14,13 @@ function treat_keyboard(k)
         love.event.quit()
     end
 
-	if k == 'up' and  orientation['down'] or
-	   k == 'down' and orientation['up'] or
-	   k == 'left' and orientation['right'] or
-	   k == 'right' and orientation['left'] or
+    if k == 'up' and  orientation['down'] or
+       k == 'down' and orientation['up'] or
+       k == 'left' and orientation['right'] or
+       k == 'right' and orientation['left'] or
        k ~= 'up' and k ~= 'down' and k ~= 'left' and k ~= 'right' then
            return
-	end
+    end
     change_orientation(k)
 end
 

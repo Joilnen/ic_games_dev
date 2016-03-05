@@ -1,6 +1,8 @@
 --[[
     Snake
     Autor: Joilnen
+    Mar 2016
+    This code is in MIT license
 --]]
 
 require 'game_event'
