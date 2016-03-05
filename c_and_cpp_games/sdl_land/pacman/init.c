@@ -1,4 +1,5 @@
 #include "init.h"
+#include "map.h"
 
 void gamescreen_init(GameScreen *g) {
     if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER))
@@ -19,5 +20,8 @@ void gamescreen_init(GameScreen *g) {
 
     SDL_RenderClear(g->renderer);
     SDL_RenderPresent(g->renderer);
+
+    GameMap *m = create_map();
+    init_map(m);
 }
 
