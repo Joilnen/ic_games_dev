@@ -16,24 +16,19 @@ void get_event(Pacman *s, unsigned int *r) {
             *r = 0;
 
         if(e.type == SDL_KEYDOWN) {
-            switch(e.key.keysym.sym) {
-                case SDLK_ESCAPE:
-                   *r = 0;
-                break;
-                case SDLK_UP:
-                    s->move = UP;
-                break;
-                case SDLK_DOWN:
-                    s->move = DOWN;
-                break;
-                case SDLK_LEFT:
-                    s->move = LEFT;
-                break;
-                case SDLK_RIGHT:
-                    s->move = RIGHT;
-            }
+            if(e.key.keysym.sym == SDLK_ESCAPE)
+                *r = 0;
+            if(e.key.keysym.sym == SDLK_UP)
+                s->move = UP;
+            if(e.key.keysym.sym == SDLK_DOWN)
+                s->move = DOWN;
+            if(e.key.keysym.sym == SDLK_LEFT)
+                s->move = LEFT;
+            if(e.key.keysym.sym == SDLK_RIGHT)
+                s->move = RIGHT;
         }
-        else s->move = NONE;
+        else if(e.type == SDL_KEYUP)
+            s->move = NONE;
     }
 }
 

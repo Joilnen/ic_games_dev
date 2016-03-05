@@ -33,11 +33,6 @@ int main()
     lasttime = nowtime = get_elapsed_time();
     while(run) {
         nowtime += get_elapsed_time();
-        get_event(pacman, &run);
-        if(nowtime - lasttime > dt) {
-            update(g.renderer, pacman, ghost);
-            lasttime = nowtime;
-        }
         draw_pacman(g.renderer, pacman);
         draw_ghost(g.renderer, ghost);
         // SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
@@ -45,6 +40,11 @@ int main()
         SDL_RenderPresent(g.renderer);
         SDL_SetRenderDrawColor(g.renderer, 0, 0, 0, 255);
         SDL_RenderClear(g.renderer);
+        get_event(pacman, &run);
+        if(nowtime - lasttime > dt) {
+            update(g.renderer, pacman, ghost);
+            lasttime = nowtime;
+        }
     }
 
     SDL_Quit();
