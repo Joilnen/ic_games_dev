@@ -1,20 +1,20 @@
-# map with 62 x 37
-oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-                                                             o 
- P                                                        *  o
-oooooooo  oooooooooooooooo  o                                o 
-       o  o              o  o                                o
-       o  o              o  o                                o
-       o  o              o  o                                o
-       o  o              o  o                                o
-       o  o            ooo  ooo                              o
-       o  o            o      o
-       o* o            o G    o
-       o  o            oooooooo
-oooooooo                         
-o
-o Y
-oooooooo
+; map with 62 x 37
+ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo#
+                                                             I 
+ P                                                        *  I
+ooooooo#  #oooooooooooooo#  #                                I 
+       I  I              I  I                                I
+       I  I              I  I                                I
+       I  I              I  I                                I
+       I  I              I  I                                I
+       I  I            #I#  #o#                              I
+       I  I            I      I
+       I* I            I G    I
+       I  I            #oooooo#
+#oooooo#                         
+I
+I Y
+#oooooo
 
 
 

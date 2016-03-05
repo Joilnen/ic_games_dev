@@ -9,13 +9,25 @@ GameMap *create_map() {
     return m;
 }
 
+void parsing_map() {
+
+}
+
 void init_map(GameMap *m) {
     FILE *f = NULL;
+    char *line;
+    size_t size = 0;
 
     if(!(f = fopen("mapmodel.txt", "r"))) {
         exit(-1);
     }
 
+    while(getline(&line, &size, f) != -1) {
+        // m->
+        printf("%s\n", line);
+    }
+
+    free(line);
     fclose(f);
 }
 
