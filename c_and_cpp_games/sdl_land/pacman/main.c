@@ -32,17 +32,15 @@ int main()
     GameMap *map = create_map();
     init_map(g.renderer, map);
 
-    // SDL_TimerID id_timer = SDL_AddTimer(5345, get_draw_tick, NULL);
-
     lasttime = nowtime = get_elapsed_time();
     while(run) {
         nowtime += get_elapsed_time();
-        draw_map(g.renderer, map);
-        draw_pacman(g.renderer, pacman);
-        draw_ghost(g.renderer, ghost);
-        SDL_RenderPresent(g.renderer);
         SDL_SetRenderDrawColor(g.renderer, 0, 0, 0, 255);
         SDL_RenderClear(g.renderer);
+        draw_map(g.renderer, map);
+        draw_ghost(g.renderer, ghost);
+        draw_pacman(g.renderer, pacman);
+        SDL_RenderPresent(g.renderer);
         get_event(pacman, &run);
         if(nowtime - lasttime > dt) {
             update(g.renderer, pacman, ghost);

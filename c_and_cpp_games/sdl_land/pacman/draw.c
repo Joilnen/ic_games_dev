@@ -22,6 +22,7 @@ void draw_ghost(SDL_Renderer *r, Ghost *s) {
 }
 
 void draw_map(SDL_Renderer *r, GameMap *m) {
+
     unsigned int x = 0, y = 0;
     unsigned int c_count = 0, l_count = 0;
     char *t = NULL;
@@ -29,18 +30,26 @@ void draw_map(SDL_Renderer *r, GameMap *m) {
     for(c_count = 0; c_count < m->sz; c_count++) {
         t = m->t_map[c_count];
         for(l_count = 0; l_count < 62; l_count++) {
-            printf("Letra %c %d %d\n", *t, l_count, c_count);
-            if(*t == 'o') {
-                SDL_Rect rect;
-                rect.x = l_count * 16; rect.y = c_count * 16;
-                rect.w = rect.h = 16;
-                SDL_RenderCopy(r, m->wall, &rect, NULL);
-            }
+            // printf("Letra %c[%d %d]", *t, l_count, c_count);
+            // printf(".%c", *t, l_count, c_count);
+            SDL_Rect srect, drect;
+            srect.x = srect.y = 0;
+            srect.w = srect.h = 32;
+            drect.x = l_count * 16; drect.y = c_count * 16;
+            drect.w = drect.h = 32;
+
+            if(*t == 'o')
+                SDL_RenderCopy(r, m->wall, &srect, &drect);
+            else if(*t == '#')
+                SDL_RenderCopy(r, m->cross, &srect, &drect);
             t++;
         }
+        // printf("\n");
     }
 }
 
 void draw_present(SDL_Renderer *r) {
     SDL_RenderPresent(r);
 }
+
+

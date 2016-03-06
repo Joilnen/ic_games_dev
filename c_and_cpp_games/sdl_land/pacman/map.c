@@ -30,23 +30,27 @@ void init_map(SDL_Renderer *r, GameMap *m) {
 
     while(getline(&line, &size, f) != -1) {
         m->t_map[l] = (char*) malloc(sizeof(char) * 62);
-        printf("%s", line);
+        // printf("%s", line);
         if(!strchr(line, ';'))
             strcpy(m->t_map[l++], line);
     }
     if(l)
         m->sz = l;
 
-    for (count = 0; count < l; count ++)
-        printf("%s", m->t_map[count]);
+    // for (count = 0; count < l; count ++)
+    //     printf("%s", m->t_map[count]);
 
     free(line);
     fclose(f);
 
     s = SDL_LoadBMP("wall_h.bmp");
+    if(s == NULL)
+        exit(-1);
     m->wall = SDL_CreateTextureFromSurface(r, s);
     SDL_FreeSurface(s);
     s = SDL_LoadBMP("wall_x.bmp");
+    if(s == NULL)
+        exit(-1);
     m->cross = SDL_CreateTextureFromSurface(r, s);
     SDL_FreeSurface(s);
 }
