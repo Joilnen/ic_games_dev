@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 #include <stdlib.h>
+#include "map.h"
 #include "pacman.h"
 #include "ghost.h"
 #include "event.h"
@@ -28,11 +29,15 @@ int main()
     Ghost *ghost = create_ghost();
     init_ghost(g.renderer, ghost);
 
+    GameMap *map = create_map();
+    init_map(map);
+
     // SDL_TimerID id_timer = SDL_AddTimer(5345, get_draw_tick, NULL);
 
     lasttime = nowtime = get_elapsed_time();
     while(run) {
         nowtime += get_elapsed_time();
+        draw_map(g.renderer, map);
         draw_pacman(g.renderer, pacman);
         draw_ghost(g.renderer, ghost);
         SDL_RenderPresent(g.renderer);

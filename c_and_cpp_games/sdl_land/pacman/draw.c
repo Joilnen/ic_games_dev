@@ -1,6 +1,7 @@
 #include <SDL2/SDL.h>
 #include "draw.h"
 #include "ghost.h"
+#include "map.h"
 
 void draw_pacman(SDL_Renderer *r, Pacman *s) {
     SDL_SetRenderDrawColor(r, 255, 255, 0, 255);
@@ -21,4 +22,20 @@ void draw_ghost(SDL_Renderer *r, Ghost *s) {
     SDL_RenderFillRect(r, &s->rect);
     SDL_RenderPresent(r);
 }
+
+void draw_map(SDL_Renderer *r, GameMap *m) {
+    unsigned int x = 0, y = 0;
+    unsigned int c_count, l_count;
+    char *t = NULL;
+
+    for(c_count = 0; c_count < m->sz; c_count++) {
+        t = m->t_map[c_count];
+        for(l_count = 0; l_count < 62; l_count++) {
+            if(*t == 'o') {
+                printf("Muro\n");
+            }
+        }
+    }
+}
+
 
