@@ -20,8 +20,5 @@ void gamescreen_init(GameScreen *g) {
 
     SDL_RenderClear(g->renderer);
     SDL_RenderPresent(g->renderer);
-
-    GameMap *m = create_map();
-    init_map(m);
 }
 

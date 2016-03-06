@@ -3,7 +3,7 @@
 
 #include "pacman.h"
 
-void draw_snake(SDL_Renderer *r, Pacman *s);
+void draw_present(SDL_Renderer *r);
 
 #endif
 

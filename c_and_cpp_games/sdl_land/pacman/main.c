@@ -30,7 +30,7 @@ int main()
     init_ghost(g.renderer, ghost);
 
     GameMap *map = create_map();
-    init_map(map);
+    init_map(g.renderer, map);
 
     // SDL_TimerID id_timer = SDL_AddTimer(5345, get_draw_tick, NULL);
 

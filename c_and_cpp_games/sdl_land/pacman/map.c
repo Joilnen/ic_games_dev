@@ -16,12 +16,13 @@ void parsing_map() {
 
 }
 
-void init_map(GameMap *m) {
+void init_map(SDL_Renderer *r, GameMap *m) {
 
     FILE *f = NULL;
     char *line;
     size_t size = 0;
     unsigned int l = 0, count;
+    SDL_Surface *s = NULL;
 
     if(!(f = fopen("mapmodel.txt", "r"))) {
         exit(-1);
@@ -41,6 +42,13 @@ void init_map(GameMap *m) {
 
     free(line);
     fclose(f);
+
+    s = SDL_LoadBMP("wall_h.bmp");
+    m->wall = SDL_CreateTextureFromSurface(r, s);
+    SDL_FreeSurface(s);
+    s = SDL_LoadBMP("wall_x.bmp");
+    m->cross = SDL_CreateTextureFromSurface(r, s);
+    SDL_FreeSurface(s);
 }
 
 
