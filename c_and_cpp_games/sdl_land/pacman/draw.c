@@ -29,17 +29,19 @@ void draw_map(SDL_Renderer *r, GameMap *m) {
 
     for(c_count = 0; c_count < m->sz; c_count++) {
         t = m->t_map[c_count];
-        for(l_count = 0; l_count < 62; l_count++) {
+        for(l_count = 0; l_count < 31; l_count++) {
             // printf("Letra %c[%d %d]", *t, l_count, c_count);
             // printf(".%c", *t, l_count, c_count);
             SDL_Rect srect, drect;
             srect.x = srect.y = 0;
             srect.w = srect.h = 32;
-            drect.x = l_count * 16; drect.y = c_count * 16;
+            drect.x = l_count * 32; drect.y = c_count * 32;
             drect.w = drect.h = 32;
 
             if(*t == 'o')
                 SDL_RenderCopy(r, m->wall, &srect, &drect);
+            else if(*t == 'I')
+                SDL_RenderCopyEx(r, m->wall, &srect, &drect, 90, NULL, SDL_FLIP_NONE);
             else if(*t == '#')
                 SDL_RenderCopy(r, m->cross, &srect, &drect);
             t++;

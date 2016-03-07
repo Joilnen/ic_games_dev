@@ -47,10 +47,8 @@ int main()
             lasttime = nowtime;
         }
     }
-
     SDL_Quit();
 
     return 0;
 }
-
 
