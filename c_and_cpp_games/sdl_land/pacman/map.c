@@ -21,7 +21,7 @@ void init_map(SDL_Renderer *r, GameMap *m) {
     FILE *f = NULL;
     char *line;
     size_t size = 0;
-    unsigned int l = 0, count;
+    unsigned int l = 0;
     SDL_Surface *s = NULL;
 
     if(!(f = fopen("mapmodel.txt", "r"))) {
@@ -65,9 +65,21 @@ void init_map(SDL_Renderer *r, GameMap *m) {
     if(s == NULL)
         exit(-1);
     m->pils = SDL_CreateTextureFromSurface(r, s);
+    s = SDL_LoadBMP("pacman.bmp");
+    if(s == NULL)
+        exit(-1);
+    m->pacman = SDL_CreateTextureFromSurface(r, s);
 
     SDL_FreeSurface(s);
 }
 
+
+void update_map(GameMap *m) {
+
+}
+
+void send_event(GameMap *m) {
+
+}
 
 

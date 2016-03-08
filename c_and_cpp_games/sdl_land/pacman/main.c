@@ -41,7 +41,8 @@ int main()
         draw_ghost(g.renderer, ghost);
         draw_pacman(g.renderer, pacman);
         SDL_RenderPresent(g.renderer);
-        get_event(pacman, &run);
+        // get_event(map, &run);
+        get_event_1(pacman, &run);
         if(nowtime - lasttime > dt) {
             update(g.renderer, pacman, ghost);
             lasttime = nowtime;

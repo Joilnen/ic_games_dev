@@ -46,12 +46,13 @@ void draw_map(SDL_Renderer *r, GameMap *m) {
                 SDL_RenderCopy(r, m->cross, &srect, &drect);
             else if(*t == '.')
                 SDL_RenderCopy(r, m->pils, &srect, &drect);
-            // else if(*t == 'P')
-            //     SDL_RenderCopy(r, m->cross, &srect, &drect);
             else if(*t == 'G')
                 SDL_RenderCopy(r, m->ghost, &srect, &drect);
             else if(*t == 'Y')
                 SDL_RenderCopy(r, m->special, &srect, &drect);
+            else if(*t == 'P')
+                SDL_RenderCopy(r, m->pacman, &srect, &drect);
+
             t++;
         }
         // printf("\n");
