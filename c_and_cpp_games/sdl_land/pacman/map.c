@@ -52,6 +52,20 @@ void init_map(SDL_Renderer *r, GameMap *m) {
     if(s == NULL)
         exit(-1);
     m->cross = SDL_CreateTextureFromSurface(r, s);
+    s = SDL_LoadBMP("ghost.bmp");
+    if(s == NULL)
+        exit(-1);
+    m->ghost = SDL_CreateTextureFromSurface(r, s);
+    SDL_FreeSurface(s);
+    s = SDL_LoadBMP("special.bmp");
+    if(s == NULL)
+        exit(-1);
+    m->special = SDL_CreateTextureFromSurface(r, s);
+    s = SDL_LoadBMP("pils1.bmp");
+    if(s == NULL)
+        exit(-1);
+    m->pils = SDL_CreateTextureFromSurface(r, s);
+
     SDL_FreeSurface(s);
 }
 

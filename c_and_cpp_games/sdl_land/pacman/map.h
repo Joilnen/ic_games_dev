@@ -6,7 +6,9 @@
 typedef struct GameMap {
     char *t_map[63];
     unsigned int sz;
-    SDL_Texture *wall, *cross;
+    SDL_Texture *wall, *cross,
+                *pils, *pacman,
+                *ghost,*special;
 } GameMap;
 
 GameMap *create_map();

@@ -2,7 +2,6 @@
 #include "pacman.h"
 
 Pacman *create_pacman() {
-
     Pacman *s = (Pacman*) malloc(sizeof(Pacman));
     if(s)
         return s;
