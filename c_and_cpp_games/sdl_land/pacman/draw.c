@@ -52,7 +52,8 @@ void draw_map(SDL_Renderer *r, GameMap *m) {
                 SDL_RenderCopy(r, m->special, &srect, &drect);
             else if(*t == 'P')
                 SDL_RenderCopy(r, m->pacman, &srect, &drect);
-
+            else if(*t == '\n')
+                break;
             t++;
         }
         // printf("\n");

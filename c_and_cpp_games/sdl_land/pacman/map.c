@@ -5,7 +5,6 @@
 #include "map.h"
 
 GameMap *create_map() {
-
     GameMap *m = (GameMap*) malloc(sizeof(GameMap));
     if(!m)
         return NULL;
@@ -24,9 +23,8 @@ void init_map(SDL_Renderer *r, GameMap *m) {
     unsigned int l = 0;
     SDL_Surface *s = NULL;
 
-    if(!(f = fopen("mapmodel.txt", "r"))) {
+    if(!(f = fopen("mapmodel.txt", "r")))
         exit(-1);
-    }
 
     while(getline(&line, &size, f) != -1) {
         m->t_map[l] = (char*) malloc(sizeof(char) * 62);
@@ -37,8 +35,9 @@ void init_map(SDL_Renderer *r, GameMap *m) {
     if(l)
         m->sz = l;
 
-    // for (count = 0; count < l; count ++)
-    //     printf("%s", m->t_map[count]);
+    int count;
+    for (count = 0; count < l; count ++)
+         printf("%s", m->t_map[count]);
 
     free(line);
     fclose(f);
@@ -72,7 +71,6 @@ void init_map(SDL_Renderer *r, GameMap *m) {
 
     SDL_FreeSurface(s);
 }
-
 
 void update_map(GameMap *m) {
 

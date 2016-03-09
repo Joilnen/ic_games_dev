@@ -23,6 +23,22 @@ function love.keypressed(k)
     treat_keyboard(k)
 end
 
+function love.touchmoved(id, x, y, dx, dy, p)
+    if math.abs(dx) > math.abs(dy) then
+        if dx > 0 then
+            love.keypressed('left')
+        else
+            love.keypressed('right')
+        end
+    elseif(math.abs(dx) < math.abs(dy)) then
+        if dy > 0 then
+            love.keypressed('down')
+        else
+            love.keypressed('up')
+        end
+    end
+end
+
 function love.update(dt)
 
     if time_lapse > time_update_limit then 
