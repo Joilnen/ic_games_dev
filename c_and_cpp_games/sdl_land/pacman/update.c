@@ -33,3 +33,4 @@ void update(SDL_Renderer *r, Pacman *p, Ghost *g) {
     }
 }
 
+

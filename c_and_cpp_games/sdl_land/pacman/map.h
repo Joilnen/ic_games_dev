@@ -3,6 +3,7 @@
 
 #include "defs.h"
 #include "pacman.h"
+#include "ghost.h"
 
 typedef struct Pos {
     int x, y;
@@ -16,6 +17,8 @@ typedef struct GameMap {
     enum move move;
     Pos pacman_pos, ghost_pos[32];
     unsigned short ghost_pos_count;
+    Pacman p;
+    Ghost g[32];
 } GameMap;
 
 GameMap *create_map();
