@@ -5,7 +5,7 @@
 #include "defs.h"
 
 enum GameState {
-    QUIT, MENU, PLAYING, WIN, LOST, RESET
+    QUIT, MENU, PREPLAYING, PLAYING, WIN, LOST, RESET, CREDITS
 };
 
 typedef struct GameScreen {
@@ -13,6 +13,8 @@ typedef struct GameScreen {
     SDL_Renderer *renderer;
     enum GameState state;
 } GameScreen;
+
+void gamescreen_init(GameScreen *g);
 
 #endif
 

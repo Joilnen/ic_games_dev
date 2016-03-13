@@ -31,7 +31,5 @@ void update(SDL_Renderer *r, Pacman *p, Ghost *g) {
         else
             p->srcRect.x = 0;
     }
-    else
-        p->srcRect.x = 0;
 }
 

@@ -14,6 +14,7 @@ typedef struct Pacman {
 Pacman *create_pacman();
 void delete_snake(Pacman *s);
 void init_snake(SDL_Renderer *r, Pacman *);
+void init_pacman(SDL_Renderer *r, Pacman *s);
 
 #endif
 

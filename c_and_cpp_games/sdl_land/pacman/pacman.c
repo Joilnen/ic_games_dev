@@ -23,7 +23,7 @@ void init_pacman(SDL_Renderer *r, Pacman *s) {
     s->dstRect.x = s->dstRect.y = 0;
     s->dstRect.w = s->dstRect.h = 31;
     s->step = 16;
-    s->move = NONE;
+    s->move = LEFT;
 }
 
 
