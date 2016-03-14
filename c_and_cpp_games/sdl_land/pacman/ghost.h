@@ -7,6 +7,7 @@ typedef struct Ghost {
     SDL_Rect srcRect, dstRect;
     SDL_Texture *sprite;
     unsigned int step;
+    unsigned short l_count, c_count;
 } Ghost;
 
 Ghost *create_ghost();

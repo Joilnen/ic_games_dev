@@ -9,6 +9,7 @@ typedef struct Pacman {
     SDL_Rect srcRect, dstRect;
     SDL_Texture *sprite;
     unsigned short step;
+    unsigned short l_count, c_count;
 } Pacman;
 
 Pacman *create_pacman();
