@@ -26,6 +26,10 @@ void init_map(SDL_Renderer *, GameMap *);
 void draw_map(SDL_Renderer *, GameMap *);
 void update_map(GameMap *);
 void send_event(GameMap *);
+void move_player(GameMap *m);
+void move_ghost(GameMap *m);
+void draw_map_player(SDL_Renderer *r, GameMap *m);
+void draw_map_ghost(SDL_Renderer *r, GameMap *m);
 
 #endif
 

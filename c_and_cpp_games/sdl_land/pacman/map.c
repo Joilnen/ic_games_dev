@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "pacman.h"
 #include "map.h"
 
 GameMap *create_map() {
@@ -11,7 +12,29 @@ GameMap *create_map() {
     return m;
 }
 
-void parsing_map() {
+static void parsing_map() {
+
+}
+
+static void init_map_player(SDL_Renderer *r, GameMap *m) {
+    SDL_Surface *t = SDL_LoadBMP("pacman.bmp");
+    m->p.sprite = SDL_CreateTextureFromSurface(r, t);
+    SDL_FreeSurface(t);
+    m->p.srcRect.x = m->p.srcRect.y = 0;
+    m->p.srcRect.x = 32;
+    m->p.srcRect.w = m->p.srcRect.h = 31;
+    m->p.dstRect.x = m->p.dstRect.y = 0;
+    m->p.dstRect.w = m->p.dstRect.h = 31;
+    m->p.step = 16;
+    m->p.move = LEFT;
+}
+
+static void init_map_ghost(SDL_Renderer *r, GameMap *m) {
+
+}
+
+void draw_map_player(SDL_Renderer *r, GameMap *m) {
+
 
 }
 
@@ -22,6 +45,7 @@ void init_map(SDL_Renderer *r, GameMap *m) {
     size_t size = 0;
     unsigned int l = 0;
     SDL_Surface *s = NULL;
+    unsigned short int count;
 
     m->ghost_pos_count = 0;
     if(!(f = fopen("mapmodel.txt", "r")))
@@ -36,7 +60,6 @@ void init_map(SDL_Renderer *r, GameMap *m) {
     if(l)
         m->sz = l;
 
-    int count;
     for (count = 0; count < l; count ++)
          printf("%s", m->t_map[count]);
 
@@ -71,6 +94,18 @@ void init_map(SDL_Renderer *r, GameMap *m) {
     m->pacman = SDL_CreateTextureFromSurface(r, s);
 
     SDL_FreeSurface(s);
+
+    init_map_player(r, m);
+    for(count = 0; m->ghost_pos_count; count++)
+        init_map_ghost(r, m);
+}
+
+void move_player(GameMap *m) {
+
+}
+
+void move_ghost(GameMap *m) {
+
 }
 
 void update_map(GameMap *m) {

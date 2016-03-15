@@ -1,5 +1,6 @@
 #include "update.h"
 #include "defs.h"
+#include "map.h"
 
 void update(SDL_Renderer *r, Pacman *p, Ghost *g) {
 
