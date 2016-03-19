@@ -41,22 +41,21 @@ void draw_map_player(SDL_Renderer *r, GameMap *m) {
 void init_map(SDL_Renderer *r, GameMap *m) {
 
     FILE *f = NULL;
-    char line[40];
-    size_t size = 33;
+    char line[MAX_MAP_LINE_SZ];
     unsigned int l = 0;
     SDL_Surface *s = NULL;
     unsigned short int count;
+    char *tmp;
 
     m->ghost_pos_count = 0;
     if(!(f = fopen("mapmodel.txt", "r")))
         exit(-1);
 
-    char *tmp;
-    while(fgets(line, size, f)) {
-        tmp = rindex(line, '\n');
-        if(!tmp) *tmp = '\0';
-        m->t_map[l] = (char*) malloc(sizeof(char) * 62);
-        // printf("%s", line);
+    while(fgets(line, MAX_MAP_LINE_SZ, f)) {
+        m->t_map[l] = (char*) malloc(sizeof(char) * MAX_MAP_LINE_SZ);
+        if(tmp = rindex(line, '\n'))
+            *tmp = '\0';
+        printf("%s\n", line);
         if(!strchr(line, ';'))
             strcpy(m->t_map[l++], line);
     }
@@ -66,7 +65,6 @@ void init_map(SDL_Renderer *r, GameMap *m) {
     for (count = 0; count < l; count ++)
          printf("%s", m->t_map[count]);
 
-    // free(line);
     fclose(f);
 
     s = SDL_LoadBMP("wall_h.bmp");

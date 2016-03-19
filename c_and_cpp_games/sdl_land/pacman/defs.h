@@ -8,4 +8,6 @@
 #define MAP_WIDTH  62
 #define MAP_HEIGH  37
 
+#define MAX_MAP_LINE_SZ 33
+
 #endif
