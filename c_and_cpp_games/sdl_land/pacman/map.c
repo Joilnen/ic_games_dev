@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define MAX_MAP_LINE_SZ 33
+#define MAX_MAP_LINE_SZ 32
 #include "map.h"
 
 GameMap *create_map() {
