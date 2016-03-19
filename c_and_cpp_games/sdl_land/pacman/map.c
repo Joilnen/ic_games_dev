@@ -63,7 +63,7 @@ void init_map(SDL_Renderer *r, GameMap *m) {
         m->sz = l;
 
     for (count = 0; count < l; count ++)
-         printf("%s", m->t_map[count]);
+         printf("%s\n", m->t_map[count]);
 
     fclose(f);
 
