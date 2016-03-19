@@ -1,13 +1,13 @@
 #ifndef DEFS_H
 #define DEFS_H
 
-#define DT_ELAPSED_LIMIT 80
+#define DT_ELAPSED_LIMIT 160
 #define WIDTH  992
 #define HEIGHT 592
 
-#define MAP_WIDTH  62
-#define MAP_HEIGH  37
+#define MAP_WIDTH  31
+#define MAP_HEIGH  18
 
-#define MAX_MAP_LINE_SZ 33
+#define MAX_MAP_LINE_SZ MAP_WIDTH + 2 /* witch line has \n and \0 */
 
 #endif
