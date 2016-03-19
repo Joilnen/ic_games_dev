@@ -12,7 +12,7 @@ typedef struct GameMap {
     char *t_map[63];
     unsigned int sz;
     SDL_Texture *wall, *cross,
-                *pils, *ghost,
+                *pils, *big_pils, *ghost,
                 *special, *pacman;
     enum move move;
     Pos pacman_pos, ghost_pos[32];

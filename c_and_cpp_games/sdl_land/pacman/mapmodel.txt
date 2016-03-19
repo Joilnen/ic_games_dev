@@ -1,21 +1,20 @@
 ; map with 31 x 18
 ; P player, G ghost and Y epsci
-oooooooooooooo# #ooooooo# #oooo
- P . . . . . . . . . . . . . *
+oooooooooooooo#.#ooooooo#.#oooo
+ P............ Y ............*
 oooo# #ooooooo# #ooooooo# #oooo
-    I.I       I I       I.I 
+    I.I       I.I       I.I 
     I.I       I.I       I.I 
     I*I       I*I       I*I 
     I.I       I.I       I.I 
-    I.I      ## ##      I.I 
-oooo# #ooooooI G Ioooooo# #oooo
-  Y          #ooo#
-oooo# #ooooooo# #ooooooo# #oooo
+    I.I       I.I       I.I 
+oooo# #oooooo## ##oooooo# #oooo
+ ... Y ..*...I G I...*.. Y ...
+oooo# #oooooo##o##oooooo# #oooo
     I.I       I.I       I.I 
     I*I       I*I       I*I 
     I.I       I.I       I.I 
-    I.I      ## ##      I.I 
+    I.I      ##.##      I.I 
 oooo# #oooooo#   #ooooooooooooo
-G
-ooooooooooooo#   #oooooo# #oooo
-
+ .Y..........  Y  ..........Y. 
+ooooooooooooo#   #oooooo#.#oooo

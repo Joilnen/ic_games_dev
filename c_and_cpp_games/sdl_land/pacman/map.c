@@ -45,7 +45,7 @@ void init_map(SDL_Renderer *r, GameMap *m) {
     unsigned int l = 0;
     SDL_Surface *s = NULL;
     unsigned short int count;
-    char *tmp;
+    char *tmp = NULL;
 
     m->ghost_pos_count = 0;
     if(!(f = fopen("mapmodel.txt", "r")))
@@ -53,12 +53,14 @@ void init_map(SDL_Renderer *r, GameMap *m) {
 
     while(fgets(line, MAX_MAP_LINE_SZ, f)) {
         m->t_map[l] = (char*) malloc(sizeof(char) * MAX_MAP_LINE_SZ);
-        if(tmp = rindex(line, '\n'))
-            *tmp = '\0';
         printf("%s\n", line);
-        if(!strchr(line, ';'))
+        if(!strchr(line, ';')) {
+            if(tmp = index(line, '\n'))
+                *tmp = '\0';
             strcpy(m->t_map[l++], line);
+        }
     }
+
     if(l)
         m->sz = l;
 
@@ -89,6 +91,11 @@ void init_map(SDL_Renderer *r, GameMap *m) {
     if(s == NULL)
         exit(-1);
     m->pils = SDL_CreateTextureFromSurface(r, s);
+    s = SDL_LoadBMP("pils.bmp");
+    if(s == NULL)
+        exit(-1);
+    m->big_pils = SDL_CreateTextureFromSurface(r, s);
+
     s = SDL_LoadBMP("pacman.bmp");
     if(s == NULL)
         exit(-1);
