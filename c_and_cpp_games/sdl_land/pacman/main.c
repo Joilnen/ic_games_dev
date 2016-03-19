@@ -15,7 +15,7 @@ Uint32 get_draw_tick(Uint32 i, void *p) {
     return 1;
 }
 
-int main()
+int main(int argc, char *argv[])
 {
     GameScreen g;
     unsigned int run = 1;
