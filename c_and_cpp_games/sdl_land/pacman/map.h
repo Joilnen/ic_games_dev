@@ -4,10 +4,12 @@
 #include "defs.h"
 #include "pacman.h"
 #include "ghost.h"
+#include "init.h"
 
 typedef struct Pos {
     int x, y;
 } Pos;
+
 typedef struct GameMap {
     char *t_map[63];
     unsigned int sz;
@@ -19,15 +21,15 @@ typedef struct GameMap {
     unsigned short ghost_pos_count;
     Pacman p;
     Ghost g[32];
+    unsigned short score_counter;
+    GameScreen *screen;
 } GameMap;
 
 GameMap *create_map();
-void init_map(SDL_Renderer *, GameMap *);
+void init_map(SDL_Renderer *, GameMap *, GameScreen *);
 void draw_map(SDL_Renderer *, GameMap *);
 void update_map(GameMap *);
 void send_event(GameMap *);
-void move_player(GameMap *m);
-void move_ghost(GameMap *m);
 void draw_map_player(SDL_Renderer *r, GameMap *m);
 void draw_map_ghost(SDL_Renderer *r, GameMap *m);
 

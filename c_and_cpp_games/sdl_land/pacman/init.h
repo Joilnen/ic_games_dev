@@ -5,7 +5,7 @@
 #include "defs.h"
 
 enum GameState {
-    QUIT, MENU, PREPLAYING, PLAYING, WIN, LOST, RESET, CREDITS
+    QUIT, MENU, PREPLAYING, PLAYING, CAN_EAT_GHOST, WIN, LOST, RESET, CREDITS
 };
 
 typedef struct GameScreen {

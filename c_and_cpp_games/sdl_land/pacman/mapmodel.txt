@@ -1,5 +1,5 @@
 ; map with 31 x 18
-; P player, G ghost and Y epsci
+; P player, G ghost and Y speci
 oooooooooooooo#.#ooooooo#.#oooo
  P............ Y ............*
 oooo# #ooooooo# #ooooooo# #oooo

@@ -7,7 +7,7 @@ static void game_exit() {
     SDL_Quit();
 }
 
-void get_event(Pacman *s, unsigned int *r) {
+void get_event_(Pacman *s, unsigned int *r) {
 
     SDL_Event e;
     const Uint8* keyState = SDL_GetKeyboardState(NULL);
@@ -27,6 +27,30 @@ void get_event(Pacman *s, unsigned int *r) {
                 s->move = LEFT;
             if(e.key.keysym.sym == SDLK_RIGHT)
                 s->move = RIGHT;
+        }
+    }
+}
+
+void get_event(GameMap *m, unsigned int *r) {
+
+    SDL_Event e;
+    const Uint8* keyState = SDL_GetKeyboardState(NULL);
+
+    if(SDL_PollEvent(&e)) {
+        if(e.type == SDL_QUIT)
+            *r = 0;
+
+        if(e.type == SDL_KEYDOWN) {
+            if(e.key.keysym.sym == SDLK_ESCAPE)
+                *r = 0;
+            if(e.key.keysym.sym == SDLK_UP)
+                m->p.move = UP;
+            if(e.key.keysym.sym == SDLK_DOWN)
+                m->p.move = DOWN;
+            if(e.key.keysym.sym == SDLK_LEFT)
+                m->p.move = LEFT;
+            if(e.key.keysym.sym == SDLK_RIGHT)
+                m->p.move = RIGHT;
         }
     }
 }

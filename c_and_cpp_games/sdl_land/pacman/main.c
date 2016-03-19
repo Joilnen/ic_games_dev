@@ -30,7 +30,7 @@ int main()
     init_ghost(g.renderer, ghost);
 
     GameMap *map = create_map();
-    init_map(g.renderer, map);
+    init_map(g.renderer, map, &g);
 
     lasttime = nowtime = get_elapsed_time();
     while(run) {
@@ -41,10 +41,12 @@ int main()
         draw_ghost(g.renderer, ghost);
         draw_pacman(g.renderer, pacman);
         SDL_RenderPresent(g.renderer);
-        // get_event(map, &run);
-        get_event(pacman, &run);
+        get_event(map, &run);
+        // get_event(pacman, &run);
         if(nowtime - lasttime > dt) {
-            update(g.renderer, pacman, ghost);
+            // update(g.renderer, pacman, ghost);
+            update(g.renderer, map);
+            update_map(map);
             lasttime = nowtime;
         }
     }
