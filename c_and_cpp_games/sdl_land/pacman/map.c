@@ -21,7 +21,6 @@ void init_map(SDL_Renderer *r, GameMap *m) {
 
     FILE *f = NULL;
     char line[MAX_MAP_LINE_SZ];
-    size_t size = 0;
     unsigned int l = 0;
     SDL_Surface *s = NULL;
 
@@ -40,7 +39,6 @@ void init_map(SDL_Renderer *r, GameMap *m) {
     // for (count = 0; count < l; count ++)
     //     printf("%s", m->t_map[count]);
 
-    free(line);
     fclose(f);
 
     s = SDL_LoadBMP("wall_h.bmp");
