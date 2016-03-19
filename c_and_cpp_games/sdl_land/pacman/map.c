@@ -110,7 +110,7 @@ void init_map(SDL_Renderer *r, GameMap *m, GameScreen *screen) {
 }
 
 static void move_player(GameMap *m, unsigned short to) {
-    printf("Cheguei %s\n", __FUNCTION__);
+    // printf("Cheguei %s\n", __FUNCTION__);
     if(to == LEFT) {
 
         printf("%c\n", m->t_map[m->pacman_pos.y][m->pacman_pos.x - 1]);
