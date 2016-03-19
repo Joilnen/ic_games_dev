@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define MAX_MAP_LINE_SZ 32
+#define MAX_MAP_LINE_SZ 33
 #include "map.h"
 
 GameMap *create_map() {
@@ -20,7 +20,7 @@ void parsing_map() {
 void init_map(SDL_Renderer *r, GameMap *m) {
 
     FILE *f = NULL;
-    char *line;
+    char line[MAX_MAP_LINE_SZ];
     size_t size = 0;
     unsigned int l = 0;
     SDL_Surface *s = NULL;
@@ -28,8 +28,7 @@ void init_map(SDL_Renderer *r, GameMap *m) {
     if(!(f = fopen("mapmodel.txt", "r"))) {
         exit(-1);
     }
-    line = (char*) malloc(sizeof(char) * MAX_MAP_LINE_SZ);
-    while(fgets(line,MAX_MAP_LINE_SZ,f) != NULL) {
+    while(fgets(line,MAX_MAP_LINE_SZ,f) != NULL){
         m->t_map[l] = (char*) malloc(sizeof(char) * 62);
         // printf("%s", line);
         if(!strchr(line, ';'))
