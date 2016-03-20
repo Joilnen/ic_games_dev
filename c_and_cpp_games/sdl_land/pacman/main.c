@@ -1,3 +1,7 @@
+/**************************
+*  Author: Joilnen Leite
+**************************/
+ 
 #include <SDL2/SDL.h>
 #include <stdlib.h>
 #include "map.h"
