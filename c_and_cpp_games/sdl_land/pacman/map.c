@@ -114,7 +114,6 @@ static void move_player(GameMap *m) {
     unsigned short to = m->p.move;
 
     if(to == LEFT) {
-
         printf("%c\n", m->t_map[m->pacman_pos.y][m->pacman_pos.x - 1]);
 
         if(m->t_map[m->pacman_pos.y][m->pacman_pos.x - 1]  == ' ') {
@@ -275,6 +274,8 @@ static void move_ghost(GameMap *m, unsigned short to) {
 
 void update_map(GameMap *m) {
     move_player(m);
+    if(m->p.move != NONE)
+        m->p.srcRect.x = (m->p.srcRect.x)? 0: 32;
 
 }
 

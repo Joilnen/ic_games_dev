@@ -1,7 +1,7 @@
 ; map with 31 x 18
 ; P player, G ghost and Y speci
 oooooooooooooo#.#ooooooo#.#oooo
- P............ Y ............*
+ P............ Y ............* 
 oooo# #ooooooo# #ooooooo# #oooo
     I.I       I.I       I.I 
     I.I       I.I       I.I 
@@ -9,7 +9,7 @@ oooo# #ooooooo# #ooooooo# #oooo
     I.I       I.I       I.I 
     I.I       I.I       I.I 
 oooo# #oooooo## ##oooooo# #oooo
- ... Y ..*...I G I...*.. Y ...
+ ... Y ..*...I G I...*.. Y ... 
 oooo# #oooooo##o##oooooo# #oooo
     I.I       I.I       I.I 
     I*I       I*I       I*I 

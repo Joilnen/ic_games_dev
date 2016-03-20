@@ -44,8 +44,8 @@ int main()
         get_event(map, &run);
         // get_event(pacman, &run);
         if(nowtime - lasttime > dt) {
-            // update(g.renderer, pacman, ghost);
-            update(g.renderer, map);
+            /* update(g.renderer, pacman, ghost); */
+            /* update(g.renderer, map); */
             update_map(map);
             lasttime = nowtime;
         }

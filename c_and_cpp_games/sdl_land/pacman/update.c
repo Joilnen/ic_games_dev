@@ -26,8 +26,10 @@ void update_(SDL_Renderer *r, Pacman *p, Ghost *g) {
     }
 }
 
+/** the first function in early stage of developping not used anymore **/
 void update(SDL_Renderer *r, GameMap *m) {
 
+    /****
     if(m->p.move == UP)
         m->p.dstRect.y -= m->p.step;
     if(m->p.move == DOWN)
@@ -44,6 +46,7 @@ void update(SDL_Renderer *r, GameMap *m) {
 
     if(m->p.move != NONE)
         m->p.srcRect.x = (m->p.srcRect.x)? 0: 32;
+    ****/
 }
 
 
