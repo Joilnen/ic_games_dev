@@ -109,8 +109,9 @@ void init_map(SDL_Renderer *r, GameMap *m, GameScreen *screen) {
     m->score_counter = 0;
 }
 
-static void move_player(GameMap *m, unsigned short to) {
+static void move_player(GameMap *m) {
     // printf("Cheguei %s\n", __FUNCTION__);
+    unsigned short to = m->p.move;
 
     if(to == LEFT) {
 
@@ -206,16 +207,22 @@ static void move_player(GameMap *m, unsigned short to) {
            printf("Ate pils\n");
         }
         else if(m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x]  == '*') {
+           m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x] = m->t_map[m->pacman_pos.y][m->pacman_pos.x];
+           m->t_map[m->pacman_pos.y][m->pacman_pos.x] = ' ';
            m->score_counter += 10;
            m->pacman_pos.y--;
            printf("Ate big pils can eat ghosts\n");
         }
         else if(m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x]  == 'Y') {
+           m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x] = m->t_map[m->pacman_pos.y][m->pacman_pos.x];
+           m->t_map[m->pacman_pos.y][m->pacman_pos.x] = ' ';
            m->score_counter += 30;
            m->pacman_pos.y--;
            printf("Ate fruit\n");
         }
         else if(m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x]  == 'G') {
+           m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x] = m->t_map[m->pacman_pos.y][m->pacman_pos.x];
+           m->t_map[m->pacman_pos.y][m->pacman_pos.x] = ' ';
            m->score_counter += 30;
            m->pacman_pos.y--;
            printf("Ate ghost or die\n");
@@ -267,7 +274,7 @@ static void move_ghost(GameMap *m, unsigned short to) {
 }
 
 void update_map(GameMap *m) {
-    move_player(m, m->p.move);
+    move_player(m);
 
 }
 

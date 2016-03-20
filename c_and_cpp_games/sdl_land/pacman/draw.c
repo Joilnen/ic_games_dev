@@ -3,17 +3,22 @@
 #include "ghost.h"
 #include "map.h"
 
-void draw_pacman(SDL_Renderer *r, Pacman *s) {
-    SDL_SetRenderDrawColor(r, 255, 255, 0, 255);
-    SDL_RenderFillRect(r, &s->rect);
-    if(s->move == LEFT || s->move == NONE)
-        SDL_RenderCopy(r, s->sprite, &s->srcRect, &s->dstRect);
-    else if(s->move == RIGHT)
-        SDL_RenderCopyEx(r, s->sprite, &s->srcRect, &s->dstRect, 0, NULL, SDL_FLIP_HORIZONTAL);
-    else if(s->move == UP)
-        SDL_RenderCopyEx(r, s->sprite, &s->srcRect, &s->dstRect, 90, NULL, SDL_FLIP_NONE);
-    else if(s->move == DOWN)
-        SDL_RenderCopyEx(r, s->sprite, &s->srcRect, &s->dstRect, -90, NULL, SDL_FLIP_NONE);
+static void draw_pacman(SDL_Renderer *r, GameMap *m) {
+
+    m->p.srcRect.y = 0;
+    m->p.srcRect.w = m->p.srcRect.h = 32;
+    /* m->p.srcRect.x = (m->p.srcRect.x)? 0: 32; this is in update because timer lapse */
+    m->p.dstRect.x = m->pacman_pos.x * 32; m->p.dstRect.y = m->pacman_pos.y * 32;
+    m->p.dstRect.w = m->p.dstRect.h = 32;
+
+    if(m->p.move == LEFT || m->p.move == NONE)
+        SDL_RenderCopy(r, m->p.sprite, &m->p.srcRect, &m->p.dstRect);
+    else if(m->p.move == RIGHT)
+        SDL_RenderCopyEx(r, m->p.sprite, &m->p.srcRect, &m->p.dstRect, 0, NULL, SDL_FLIP_HORIZONTAL);
+    else if(m->p.move == UP)
+        SDL_RenderCopyEx(r, m->p.sprite, &m->p.srcRect, &m->p.dstRect, 90, NULL, SDL_FLIP_NONE);
+    else if(m->p.move == DOWN)
+        SDL_RenderCopyEx(r, m->p.sprite, &m->p.srcRect, &m->p.dstRect, -90, NULL, SDL_FLIP_NONE);
 }
 
 void draw_ghost(SDL_Renderer *r, Ghost *s) {
@@ -56,7 +61,8 @@ void draw_map(SDL_Renderer *r, GameMap *m) {
             else if(*t == 'Y')
                 SDL_RenderCopy(r, m->special, &srect, &drect);
             else if(*t == 'P') {
-                SDL_RenderCopy(r, m->pacman, &srect, &drect);
+                // SDL_RenderCopy(r, m->pacman, &srect, &drect);
+                draw_pacman(r, m);
                 m->pacman_pos.x = l_count; m->pacman_pos.y = c_count;
             }
             else if(*t == '\n')

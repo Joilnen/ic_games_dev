@@ -39,7 +39,7 @@ int main()
         SDL_RenderClear(g.renderer);
         draw_map(g.renderer, map);
         draw_ghost(g.renderer, ghost);
-        draw_pacman(g.renderer, pacman);
+        // draw_pacman(g.renderer, pacman);
         SDL_RenderPresent(g.renderer);
         get_event(map, &run);
         // get_event(pacman, &run);
