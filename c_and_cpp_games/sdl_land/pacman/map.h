@@ -32,6 +32,8 @@ void update_map(GameMap *);
 void send_event(GameMap *);
 void draw_map_player(SDL_Renderer *r, GameMap *m);
 void draw_map_ghost(SDL_Renderer *r, GameMap *m);
+unsigned short check_colide_player(GameMap *, enum move);
+
 
 #endif
 

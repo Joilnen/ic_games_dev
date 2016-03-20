@@ -111,6 +111,7 @@ void init_map(SDL_Renderer *r, GameMap *m, GameScreen *screen) {
 
 static void move_player(GameMap *m, unsigned short to) {
     // printf("Cheguei %s\n", __FUNCTION__);
+
     if(to == LEFT) {
 
         printf("%c\n", m->t_map[m->pacman_pos.y][m->pacman_pos.x - 1]);
@@ -191,11 +192,17 @@ static void move_player(GameMap *m, unsigned short to) {
 
         printf("%c\n", m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x]);
 
-        if(m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x]  == ' ')
+        if(m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x]  == ' ') {
+           m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x] = m->t_map[m->pacman_pos.y][m->pacman_pos.x];
+           m->t_map[m->pacman_pos.y][m->pacman_pos.x] = ' ';
            m->pacman_pos.y--;
+        }
         else if(m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x]  == '.') {
+           m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x] = m->t_map[m->pacman_pos.y][m->pacman_pos.x];
+           m->t_map[m->pacman_pos.y][m->pacman_pos.x] = ' ';
            m->score_counter++;
            m->pacman_pos.y--;
+
            printf("Ate pils\n");
         }
         else if(m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x]  == '*') {
@@ -218,24 +225,36 @@ static void move_player(GameMap *m, unsigned short to) {
 
         printf("%c\n", m->t_map[m->pacman_pos.y + 1][m->pacman_pos.x]);
 
-        if(m->t_map[m->pacman_pos.y + 1][m->pacman_pos.x]  == ' ')
+        if(m->t_map[m->pacman_pos.y + 1][m->pacman_pos.x]  == ' ') {
+           m->t_map[m->pacman_pos.y + 1][m->pacman_pos.x] = m->t_map[m->pacman_pos.y][m->pacman_pos.x];
+           m->t_map[m->pacman_pos.y][m->pacman_pos.x] = ' ';
            m->pacman_pos.y++;
+        }
         else if(m->t_map[m->pacman_pos.y + 1][m->pacman_pos.x]  == '.') {
+           m->t_map[m->pacman_pos.y + 1][m->pacman_pos.x] = m->t_map[m->pacman_pos.y][m->pacman_pos.x];
+           m->t_map[m->pacman_pos.y][m->pacman_pos.x] = ' ';
            m->score_counter++;
            m->pacman_pos.y++;
+
            printf("Ate pils\n");
         }
         else if(m->t_map[m->pacman_pos.y + 1][m->pacman_pos.x]  == '*') {
+           m->t_map[m->pacman_pos.y + 1][m->pacman_pos.x] = m->t_map[m->pacman_pos.y][m->pacman_pos.x];
+           m->t_map[m->pacman_pos.y][m->pacman_pos.x] = ' ';
            m->score_counter += 10;
            m->pacman_pos.y++;
            printf("Ate big pils can eat ghosts\n");
         }
         else if(m->t_map[m->pacman_pos.y + 1][m->pacman_pos.x]  == 'Y') {
+           m->t_map[m->pacman_pos.y + 1][m->pacman_pos.x] = m->t_map[m->pacman_pos.y][m->pacman_pos.x];
+           m->t_map[m->pacman_pos.y][m->pacman_pos.x] = ' ';
            m->score_counter += 30;
            m->pacman_pos.y++;
            printf("Ate fruit\n");
         }
         else if(m->t_map[m->pacman_pos.y + 1][m->pacman_pos.x]  == 'G') {
+           m->t_map[m->pacman_pos.y + 1][m->pacman_pos.x] = m->t_map[m->pacman_pos.y][m->pacman_pos.x];
+           m->t_map[m->pacman_pos.y][m->pacman_pos.x] = ' ';
            m->score_counter += 30;
            m->pacman_pos.y++;
            printf("Ate ghost or die\n");
@@ -256,4 +275,24 @@ void send_event(GameMap *m) {
 
 }
 
+unsigned short check_colide_player(GameMap *m, enum move to) {
+
+    if(to == LEFT && m->t_map[m->pacman_pos.y][m->pacman_pos.x - 1] == 'o' ||
+       to == RIGHT && m->t_map[m->pacman_pos.y][m->pacman_pos.x + 1] == 'o' ||
+       to == UP && m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x] == 'o' ||
+       to == DOWN && m->t_map[m->pacman_pos.y + 1][m->pacman_pos.x] == 'o')
+            return 1;
+    else if(to == LEFT && m->t_map[m->pacman_pos.y][m->pacman_pos.x - 1] == '#' ||
+       to == RIGHT && m->t_map[m->pacman_pos.y][m->pacman_pos.x + 1] == '#' ||
+       to == UP && m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x] == '#' ||
+       to == DOWN && m->t_map[m->pacman_pos.y + 1][m->pacman_pos.x] == '#')
+            return 1;
+    else if(to == LEFT && m->t_map[m->pacman_pos.y][m->pacman_pos.x - 1] == 'I' ||
+       to == RIGHT && m->t_map[m->pacman_pos.y][m->pacman_pos.x + 1] == 'I' ||
+       to == UP && m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x] == 'I' ||
+       to == DOWN && m->t_map[m->pacman_pos.y + 1][m->pacman_pos.x] == 'I')
+            return 1;
+
+    return 0;
+}
 
