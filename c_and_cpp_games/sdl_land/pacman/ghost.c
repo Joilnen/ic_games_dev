@@ -21,3 +21,4 @@ void init_ghost(SDL_Renderer *r, Ghost *s) {
 
 
 
+

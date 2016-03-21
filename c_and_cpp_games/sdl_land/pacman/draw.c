@@ -21,7 +21,7 @@ static void draw_pacman(SDL_Renderer *r, GameMap *m) {
         SDL_RenderCopyEx(r, m->p.sprite, &m->p.srcRect, &m->p.dstRect, -90, NULL, SDL_FLIP_NONE);
 }
 
-void draw_ghost(SDL_Renderer *r, Ghost *s) {
+static void draw_ghost(SDL_Renderer *r, Ghost *s) {
     // SDL_SetRenderDrawColor(r, 255, 255, 0, 255);
     // SDL_RenderFillRect(r, &s->rect);
 }
@@ -54,9 +54,9 @@ void draw_map(SDL_Renderer *r, GameMap *m) {
             else if(*t == '*')
                 SDL_RenderCopy(r, m->big_pils, &srect, &drect);
             else if(*t == 'G') {
-                SDL_RenderCopy(r, m->ghost, &srect, &drect);
-                m->ghost_pos[m->ghost_pos_count].x = l_count;
-                m->ghost_pos[m->ghost_pos_count++].y = c_count;
+                // SDL_RenderCopy(r, m->ghost, &srect, &drect);
+                m->ghost_born_pos.x = l_count;
+                m->ghost_born_pos.y = c_count;
             }
             else if(*t == 'Y')
                 SDL_RenderCopy(r, m->special, &srect, &drect);

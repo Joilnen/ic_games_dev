@@ -9,5 +9,5 @@
 #define MAP_HEIGH  18
 
 #define MAX_MAP_LINE_SZ MAP_WIDTH + 2 /* witch line has \n and \0 */
-
+#define MAX_GHOST_COUNTER_SZ 3
 #endif

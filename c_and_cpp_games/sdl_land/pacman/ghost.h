@@ -13,6 +13,5 @@ typedef struct Ghost {
 Ghost *create_ghost();
 void delete_ghost(Ghost *s);
 void init_ghost(SDL_Renderer *r, Ghost *);
-void draw_ghost(SDL_Renderer*, Ghost *);
 
 #endif

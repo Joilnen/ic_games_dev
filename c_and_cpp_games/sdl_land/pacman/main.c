@@ -14,11 +14,6 @@
 #include "timer.h"
 #include "defs.h"
 
-Uint32 get_draw_tick(Uint32 i, void *p) {
-    printf("Timer wake up\n");
-    return 1;
-}
-
 int main()
 {
     GameScreen g;
@@ -42,7 +37,7 @@ int main()
         SDL_SetRenderDrawColor(g.renderer, 0, 0, 0, 255);
         SDL_RenderClear(g.renderer);
         draw_map(g.renderer, map);
-        draw_ghost(g.renderer, ghost);
+        // draw_ghost(g.renderer, ghost);
         // draw_pacman(g.renderer, pacman);
         SDL_RenderPresent(g.renderer);
         get_event(map, &run);

@@ -17,10 +17,11 @@ typedef struct GameMap {
                 *pils, *big_pils, *ghost,
                 *special, *pacman;
     enum move move;
-    Pos pacman_pos, ghost_pos[32];
+    Pos pacman_pos, ghost_pos[MAX_GHOST_COUNTER_SZ], ghost_born_pos;
     unsigned short ghost_pos_count;
     Pacman p;
-    Ghost g[32];
+    Ghost g[MAX_GHOST_COUNTER_SZ];
+    unsigned short ghost_counter;
     unsigned short score_counter;
     GameScreen *screen;
 } GameMap;
@@ -33,7 +34,6 @@ void send_event(GameMap *);
 void draw_map_player(SDL_Renderer *r, GameMap *m);
 void draw_map_ghost(SDL_Renderer *r, GameMap *m);
 unsigned short check_colide_player(GameMap *, enum move);
-
 
 #endif
 

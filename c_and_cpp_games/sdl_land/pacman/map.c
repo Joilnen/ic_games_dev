@@ -12,10 +12,6 @@ GameMap *create_map() {
     return m;
 }
 
-static void parsing_map() {
-
-}
-
 static void init_map_player(SDL_Renderer *r, GameMap *m) {
     SDL_Surface *t = SDL_LoadBMP("pacman.bmp");
     m->p.sprite = SDL_CreateTextureFromSurface(r, t);
@@ -26,11 +22,19 @@ static void init_map_player(SDL_Renderer *r, GameMap *m) {
     m->p.dstRect.x = m->p.dstRect.y = 0;
     m->p.dstRect.w = m->p.dstRect.h = 31;
     m->p.step = 16;
-    m->p.move = LEFT;
+    m->p.move = NONE;
 }
 
 static void init_map_ghost(SDL_Renderer *r, GameMap *m) {
-
+    SDL_Surface *t = SDL_LoadBMP("ghost.bmp");
+    int i;
+    for(i = 0; i < m->ghost_counter; i++) {
+        m->g[i].sprite = SDL_CreateTextureFromSurface(r, t);
+        m->g[i].srcRect.x = m->ghost_born_pos.x * 32;
+        m->g[i].srcRect.y = m->ghost_born_pos.y * 32;
+        m->g[i].srcRect.w = m->g[i].srcRect.h = 31;
+    }
+    SDL_FreeSurface(t);
 }
 
 void draw_map_player(SDL_Renderer *r, GameMap *m) {
@@ -54,10 +58,19 @@ void init_map(SDL_Renderer *r, GameMap *m, GameScreen *screen) {
     while(fgets(line, MAX_MAP_LINE_SZ, f)) {
         m->t_map[l] = (char*) malloc(sizeof(char) * MAX_MAP_LINE_SZ);
         printf("%s\n", line);
-        if(!strchr(line, ';')) {
+        if(!strchr(line, ';') && !strchr(line, '=')) {
             if(tmp = index(line, '\n'))
                 *tmp = '\0';
             strcpy(m->t_map[l++], line);
+        }
+        else if(strchr(line, '=')) {
+            char tmp[MAX_GHOST_COUNTER_SZ];
+            unsigned short s;
+
+            if(strlen(line) - 1 > MAX_GHOST_COUNTER_SZ)
+                exit(-1);
+            strcpy(tmp, line + 1);
+            m->ghost_counter = atoi(tmp);
         }
     }
 
@@ -288,14 +301,12 @@ unsigned short check_colide_player(GameMap *m, enum move to) {
     if(to == LEFT && m->t_map[m->pacman_pos.y][m->pacman_pos.x - 1] == 'o' ||
        to == RIGHT && m->t_map[m->pacman_pos.y][m->pacman_pos.x + 1] == 'o' ||
        to == UP && m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x] == 'o' ||
-       to == DOWN && m->t_map[m->pacman_pos.y + 1][m->pacman_pos.x] == 'o')
-            return 1;
-    else if(to == LEFT && m->t_map[m->pacman_pos.y][m->pacman_pos.x - 1] == '#' ||
+       to == DOWN && m->t_map[m->pacman_pos.y + 1][m->pacman_pos.x] == 'o' ||
+       to == LEFT && m->t_map[m->pacman_pos.y][m->pacman_pos.x - 1] == '#' ||
        to == RIGHT && m->t_map[m->pacman_pos.y][m->pacman_pos.x + 1] == '#' ||
        to == UP && m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x] == '#' ||
-       to == DOWN && m->t_map[m->pacman_pos.y + 1][m->pacman_pos.x] == '#')
-            return 1;
-    else if(to == LEFT && m->t_map[m->pacman_pos.y][m->pacman_pos.x - 1] == 'I' ||
+       to == DOWN && m->t_map[m->pacman_pos.y + 1][m->pacman_pos.x] == '#' ||
+       to == LEFT && m->t_map[m->pacman_pos.y][m->pacman_pos.x - 1] == 'I' ||
        to == RIGHT && m->t_map[m->pacman_pos.y][m->pacman_pos.x + 1] == 'I' ||
        to == UP && m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x] == 'I' ||
        to == DOWN && m->t_map[m->pacman_pos.y + 1][m->pacman_pos.x] == 'I')
