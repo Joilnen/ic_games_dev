@@ -4,14 +4,14 @@ function game_load()
     font1 = love.graphics.newFont('fonts/Marker Felt.ttf', 36)
     font2 = love.graphics.newFont('fonts/Marker Felt.ttf', 20)
 
-    snake_body_pos_list = {}
-    sn_body_list_count = 1
+    enemy_pos_list = {}
+    enemy_list_count = 1
 
     lost_flag = false
     paused_flag = false
 
-    width = 480
-    height = 480
+    width = 800
+    height = 600
 
     size_xy = 16
     sn_x = math.abs(width / size_xy)
@@ -30,9 +30,9 @@ function game_load()
     figs_dir = 'figs/'
 
     love.window.setTitle("Snake v1.0")
-    snake_border = love.graphics.newImage(figs_dir .. 'snake_border_1.png')
-    snake_body = love.graphics.newImage(figs_dir .. 'sn1.png')
-    snake_body_pos_list[1] = {x = sn_x, y = sn_y}
+    border = love.graphics.newImage(figs_dir .. 'snake_border_1.png')
+    cannon = love.graphics.newImage(figs_dir .. 'sn1.png')
+    enemy_pos_list[1] = {x = sn_x, y = sn_y}
 
     point = love.graphics.newImage(figs_dir .. 'point.png')
     love.window.setMode(width, height)
@@ -42,18 +42,17 @@ function game_load()
 
     score_font = love.graphics.newFont(26)
     score = 0
-    -- hiscore = score
 end
 
 function reset_game()
-    snake_body_pos_list = {}
+    enemy_pos_list = {}
     lost_flag = false
 
     sn_x = math.abs(width / 16)
     sn_y = math.abs(height / 16)
 
-    snake_body_pos_list[1] = {x = sn_x, y = sn_y}
-    sn_body_list_count = 1
+    enemy_pos_list[1] = {x = sn_x, y = sn_y}
+    enemy_list_count = 1
     score = 0
 end
 
