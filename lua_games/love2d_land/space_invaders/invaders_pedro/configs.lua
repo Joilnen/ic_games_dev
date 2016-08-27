@@ -1,0 +1,2 @@
+windowWidth = 800
+windowHeight = 600
