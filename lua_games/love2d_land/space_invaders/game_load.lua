@@ -1,3 +1,5 @@
+local anim = require 'anim8'
+
 function game_load()
     -- debug.debug()
     -- t.console = true
@@ -32,7 +34,12 @@ function game_load()
     love.window.setTitle("Snake v1.0")
     -- border = love.graphics.newImage(figs_dir .. 'border.png')
     cannon = love.graphics.newImage(figs_dir .. 'sn1.png')
+    enemy_list = {}
     enemy_pos_list[1] = {x = sn_x, y = sn_y}
+    enemy_list['en1'] = love.graphics.newImage(figs_dir .. 'en1.png')
+
+    g = anim.newGrid(80, 58, enemy_list['en1']:getWidth(), enemy_list['en1']:getHeight())
+    anima = anim.newAnimation(g('1-2', 1), 0.4)
 
     point = love.graphics.newImage(figs_dir .. 'point.png')
     love.window.setMode(width, height)

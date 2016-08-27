@@ -46,5 +46,6 @@ function love.update(dt)
         time_lapse =  dt
     end
     time_lapse = time_lapse + dt
+    anima:update(dt)
 end
 
