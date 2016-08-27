@@ -16,7 +16,7 @@ function love.load()
 end
 
 function love.draw()
-    -- game_draw()
+    game_draw()
 end
 
 function love.keypressed(k)

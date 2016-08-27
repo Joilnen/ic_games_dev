@@ -30,7 +30,7 @@ function game_load()
     figs_dir = 'figs/'
 
     love.window.setTitle("Snake v1.0")
-    border = love.graphics.newImage(figs_dir .. 'snake_border_1.png')
+    -- border = love.graphics.newImage(figs_dir .. 'border.png')
     cannon = love.graphics.newImage(figs_dir .. 'sn1.png')
     enemy_pos_list[1] = {x = sn_x, y = sn_y}
 
