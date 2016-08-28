@@ -1,15 +1,16 @@
 --[[
     Space Invaders
-    Autor: Joilnen e Lukkas
+    Autor: Joilnen, Lukkas e Pedro
     Mar 2016
     This code is in MIT license
---]]
+]]
 
 require 'game_event'
 require 'game_update'
 require 'game_load'
 require 'game_lost'
 require 'game_draw'
+require 'bullet_list'
 
 function love.load()
     game_load()
@@ -56,4 +57,5 @@ function love.update(dt)
         orientation['shot'] = nil
     end
 end
+
 

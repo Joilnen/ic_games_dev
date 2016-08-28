@@ -6,10 +6,13 @@ end
 
 function set_animnator()
     local g = anim.newGrid(32, 32, enemies:getWidth(), enemies:getHeight())
-    animator_list['en_1'] = anim.newAnimation(g('3-4', 1), 0.4)
+    animator_list['en_1'] = anim.newAnimation(g('5-6', 1), 0.4)
     animator_list['en_2'] = anim.newAnimation(g('1-2', 1), 0.4)
-    animator_list['en_3'] = anim.newAnimation(g('1-2', 2), 0.4)
-    animator_list['cannon'] = anim.newAnimation(g('1-1', 3), 0.1)
+    animator_list['en_3'] = anim.newAnimation(g('3-4', 1), 0.4)
+    animator_list['cannon'] = anim.newAnimation(g('1-1', 2), 0.1)
+    animator_list['bullet_1'] = anim.newAnimation(g('2-3', 2), 0.1)
+    animator_list['bullet_2'] = anim.newAnimation(g('4-5', 2), 0.1)
+    animator_list['bullet_cannon'] = anim.newAnimation(g('6-6', 2), 0.1)
 end
 
 function game_load()
@@ -55,7 +58,7 @@ function game_load()
     time_update_limit = .2
 
     music = love.audio.newSource(figs_dir .. "song.xm")
-    music:play()
+    music:play(true)
 
     score_font = love.graphics.newFont(26)
     score = 0

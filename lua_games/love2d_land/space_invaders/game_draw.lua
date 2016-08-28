@@ -40,9 +40,14 @@ function game_draw()
     -- print("p_x * size_xy / 2", p_x * size_xy / 2)
     -- print("p_y * size_xy ", p_y * size_xy)
     animator_list['cannon']:draw(enemies, p_x * size_xy / 2, p_y * size_xy);
+    animator_list['bullet_1']:draw(enemies, p_x * size_xy / 2, p_y * size_xy - 100);
+    animator_list['bullet_2']:draw(enemies, p_x * size_xy / 2 + 100, p_y * size_xy - 100);
+    animator_list['bullet_cannon']:draw(enemies, p_x * size_xy / 2 + 200, p_y * size_xy - 100);
 
-    if orientation['shot'] then love.graphics.print('Shoting', 200, 0)
-    else love.graphics.print('         ', 200, 0) end
+    if orientation['shot'] then
+        love.graphics.print('Shooting', 200, 0)
+    end
+
     love.graphics.setFont(score_font)
     love.graphics.print(score, 10, 0)
 
