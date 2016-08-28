@@ -15,8 +15,8 @@ function game_update()
 
     if p_x < 1 then
         p_x = 1
-    elseif p_x > 28 then
-        p_x = 28
+    elseif p_x > size_xy * 6 then
+        p_x = size_xy * 6
     end
 end
 

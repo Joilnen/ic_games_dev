@@ -29,10 +29,10 @@ function game_load()
 
     size_xy = 16
     sn_x = math.abs(width / size_xy)
-    sn_y = math.abs(height / size_xy) + 2
+    sn_y = math.abs(height / size_xy)
 
-    p_x = sn_x * 7
-    p_y = sn_y * 13
+    p_x = 7
+    p_y = 32
 
     orientation = {
         shot = nil,

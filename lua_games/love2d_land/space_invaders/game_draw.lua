@@ -1,3 +1,6 @@
+function shoot()
+
+end
 
 function game_draw()
     if lost_flag then
@@ -34,10 +37,16 @@ function game_draw()
         count_y = count_y + 40
     end
 
-    animator_list['cannon']:draw(enemies, p_x, p_y);
+    -- print("p_x * size_xy / 2", p_x * size_xy / 2)
+    -- print("p_y * size_xy ", p_y * size_xy)
+    animator_list['cannon']:draw(enemies, p_x * size_xy / 2, p_y * size_xy);
 
+    if orientation['shot'] then love.graphics.print('Shoting', 200, 0)
+    else love.graphics.print('         ', 200, 0) end
     love.graphics.setFont(score_font)
     love.graphics.print(score, 10, 0)
+
+    if orientation['shot'] then shoot() end
 end
 
 

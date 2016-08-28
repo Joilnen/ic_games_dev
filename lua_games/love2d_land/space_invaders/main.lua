@@ -45,8 +45,15 @@ function love.update(dt)
         time_lapse =  dt
     end
     time_lapse = time_lapse + dt
+
     for k, v in pairs(animator_list) do
         animator_list[k]:update(dt)
+    end
+
+    if love.keyboard.isDown('z') then
+        orientation['shot'] = true
+    else
+        orientation['shot'] = nil
     end
 end
 

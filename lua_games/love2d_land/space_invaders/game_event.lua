@@ -1,6 +1,9 @@
 function change_orientation(k)
-    for ch, v in pairs(orientation) do orientation[ch] = false end
+    if k == 'left' then orientation['right'] = nil end
+    if k == 'right' then orientation['left'] = nil end
+
     orientation[k] = true
+
 end
 
 function treat_keyboard(k)
@@ -14,11 +17,6 @@ function treat_keyboard(k)
         love.event.quit()
     end
 
-    if k == 'left' and orientation['right'] or
-       k == 'right' and orientation['left'] or
-       k ~= 'left' and k ~= 'right' then
-           return
-    end
     change_orientation(k)
 end
 
