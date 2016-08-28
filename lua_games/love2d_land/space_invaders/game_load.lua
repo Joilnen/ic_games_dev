@@ -18,11 +18,10 @@ function game_load()
     font1 = love.graphics.newFont('fonts/Marker Felt.ttf', 36)
     font2 = love.graphics.newFont('fonts/Marker Felt.ttf', 20)
 
-    enemy_pos_list = {}
-    enemy_list_count = 1
-
     lost_flag = false
     paused_flag = false
+
+    bullet_list = {}
 
     width = 800
     height = 600
@@ -54,6 +53,9 @@ function game_load()
 
     time_lapse = 0
     time_update_limit = .2
+
+    music = love.audio.newSource(figs_dir .. "song.xm")
+    music:play()
 
     score_font = love.graphics.newFont(26)
     score = 0
