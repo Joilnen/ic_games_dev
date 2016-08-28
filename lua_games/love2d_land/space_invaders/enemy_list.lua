@@ -1,15 +1,15 @@
 
-Bullet = {
+Enemy = {
     animator = nil,
     x, y,
     lineToShoot
 }
 
-function Bullet:setAnimator(a)
+function Enemy:setAnimator(a)
     self.animator = a
 end
 
-function Bullet:getAnimator()
+function Enemy:getAnimator()
     return self.animator
 end
 
@@ -25,12 +25,12 @@ function getLineToShoot()
     return self.lineToShoot
 end
 
-BulletList = {
+EnemyList = {
     l = {},
     count_list
 }
 
-function BulletList:addBullet(a)
+function EnemyList:addEnemy(a)
     if self.count_list == 0 then
         self.count_list = 1
     else
@@ -39,7 +39,7 @@ function BulletList:addBullet(a)
     self.l[count_list] = a
 end
 
-function BulletList:getBulletList()
+function EnemyList:getEnemyList()
     return self.l
 end
 

@@ -1,10 +1,12 @@
+local enemyList = require 'enemy_list'
+local bulletList = require 'bullet_list'
 local anim = require 'anim8'
 
-function load_assets(cannon, barries)
+function loadAssets(cannon, barries)
     enemies = love.graphics.newImage(figs_dir .. 'enemies.png')
 end
 
-function set_animnator()
+function setAnimator()
     local g = anim.newGrid(32, 32, enemies:getWidth(), enemies:getHeight())
     animator_list['en_1'] = anim.newAnimation(g('5-6', 1), 0.4)
     animator_list['en_2'] = anim.newAnimation(g('1-2', 1), 0.4)
@@ -24,7 +26,7 @@ function game_load()
     lost_flag = false
     paused_flag = false
 
-    bullet_list = {}
+    -- bullet_list = {}
 
     width = 800
     height = 600
@@ -49,8 +51,8 @@ function game_load()
     -- border = love.graphics.newImage(figs_dir .. 'border.png')
     cannon = love.graphics.newImage(figs_dir .. 'sn1.png')
     animator_list = {}
-    load_assets()
-    set_animnator()
+    loadAssets()
+    setAnimator()
 
     love.window.setMode(width, height)
 
@@ -58,7 +60,8 @@ function game_load()
     time_update_limit = .2
 
     music = love.audio.newSource(figs_dir .. "song.xm")
-    music:play(true)
+    music:setLooping(true)
+    music:play()
 
     score_font = love.graphics.newFont(26)
     score = 0

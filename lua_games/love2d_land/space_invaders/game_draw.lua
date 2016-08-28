@@ -8,12 +8,12 @@ function game_draw()
     elseif paused_flag then
         show_pause()
     end
-    -- love.graphics.draw(border, 0, 0)
+
     local count_x = 110
     local count_y = 120
 
     for i = 1, 11 do
-        animator_list['en_3']:draw(enemies, count_x, count_y)
+        animator_list['en_1']:draw(enemies, count_x, count_y)
         count_x = count_x + 50
     end
     count_x = 110
@@ -30,7 +30,7 @@ function game_draw()
 
     for a = 1, 2 do
         for i = 1, 11 do
-            animator_list['en_1']:draw(enemies, count_x, count_y)
+            animator_list['en_3']:draw(enemies, count_x, count_y)
             count_x = count_x + 50
         end
         count_x = 110
