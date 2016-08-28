@@ -50,7 +50,7 @@ function love.update(dt)
         animator_list[k]:update(dt)
     end
 
-    if love.keyboard.isDown('z') then
+    if love.keyboard.isDown('lctrl') then
         orientation['shot'] = true
     else
         orientation['shot'] = nil
