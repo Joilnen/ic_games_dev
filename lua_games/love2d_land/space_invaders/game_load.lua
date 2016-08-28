@@ -1,5 +1,17 @@
 local anim = require 'anim8'
 
+function load_assets(cannon, barries)
+    enemies = love.graphics.newImage(figs_dir .. 'enemies.png')
+end
+
+function set_animnator()
+    local g = anim.newGrid(32, 32, enemies:getWidth(), enemies:getHeight())
+    animator_list['en_1'] = anim.newAnimation(g('3-4', 1), 0.4)
+    animator_list['en_2'] = anim.newAnimation(g('1-2', 1), 0.4)
+    animator_list['en_3'] = anim.newAnimation(g('1-2', 2), 0.4)
+    animator_list['cannon'] = anim.newAnimation(g('1-1', 3), 0.1)
+end
+
 function game_load()
     -- debug.debug()
     -- t.console = true
@@ -19,29 +31,25 @@ function game_load()
     sn_x = math.abs(width / size_xy)
     sn_y = math.abs(height / size_xy) + 2
 
-    p_x = 1
-    p_y = 5
+    p_x = sn_x * 7
+    p_y = sn_y * 13
 
     orientation = {
-        up = nil,
-        down = nil,
+        shot = nil,
+        double_shot = nil,
         left = nil,
         right = nil
     }
 
     figs_dir = 'figs/'
 
-    love.window.setTitle("Snake v1.0")
+    love.window.setTitle("Space Invaders v1.0")
     -- border = love.graphics.newImage(figs_dir .. 'border.png')
     cannon = love.graphics.newImage(figs_dir .. 'sn1.png')
-    enemy_list = {}
-    enemy_pos_list[1] = {x = sn_x, y = sn_y}
-    enemy_list['en1'] = love.graphics.newImage(figs_dir .. 'en1.png')
+    animator_list = {}
+    load_assets()
+    set_animnator()
 
-    g = anim.newGrid(80, 58, enemy_list['en1']:getWidth(), enemy_list['en1']:getHeight())
-    anima = anim.newAnimation(g('1-2', 1), 0.4)
-
-    point = love.graphics.newImage(figs_dir .. 'point.png')
     love.window.setMode(width, height)
 
     time_lapse = 0

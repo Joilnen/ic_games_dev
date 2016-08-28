@@ -1,6 +1,6 @@
 --[[
     Space Invaders
-    Autor: Joilnen
+    Autor: Joilnen e Lukkas
     Mar 2016
     This code is in MIT license
 --]]
@@ -40,12 +40,13 @@ end
 -- end
 
 function love.update(dt)
-
     if time_lapse > time_update_limit then 
-        -- game_update()
+        game_update()
         time_lapse =  dt
     end
     time_lapse = time_lapse + dt
-    anima:update(dt)
+    for k, v in pairs(animator_list) do
+        animator_list[k]:update(dt)
+    end
 end
 

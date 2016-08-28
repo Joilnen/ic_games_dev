@@ -3,7 +3,7 @@ require 'resources'
 playerPositionX = windowWidth * 0.5
 playerPositionY = windowHeight * 0.92
 playerCurrentMovement = ''
-playerSpeed = 0.8
+playerSpeed = 5.8
 
 function handleKeyboard(key)
 	if key == 'left' then
@@ -44,7 +44,7 @@ function drawPlayer()
 	love.graphics.print(tostring(playerPositionX),
 	300,200)
 	love.graphics.setColor(255,0,0)
-	love.graphics.point(playerPositionX,playerPositionY)
+	love.graphics.points(playerPositionX,playerPositionY)
 	love.graphics.setColor(255,255,255)
 	love.graphics.draw(playerSprite,
 	playerPositionX - playerSprite:getWidth()/2,
