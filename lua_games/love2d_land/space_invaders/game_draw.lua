@@ -37,6 +37,12 @@ function game_draw()
         count_y = count_y + 40
     end
 
+--[[ why it is not working ?
+    for i in el.getEnemyList() do
+        i:getAnimator():draw()
+    end
+]]
+
     -- print("p_x * size_xy / 2", p_x * size_xy / 2)
     -- print("p_y * size_xy ", p_y * size_xy)
     animator_list['cannon']:draw(enemies, p_x * size_xy / 2, p_y * size_xy);
