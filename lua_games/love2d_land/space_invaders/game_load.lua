@@ -1,6 +1,6 @@
 require 'enemy'
-require 'bullet'
 require 'list'
+require 'cannon'
 
 local anim = require 'anim8'
 
@@ -62,10 +62,7 @@ function createEnemies()
         count_y = count_y + 40
     end
 
-
     love.graphics.setFont(score_font)
-
-    if orientation['shot'] then shoot() end
 end
 
 function game_load()
@@ -117,6 +114,11 @@ function game_load()
     score = 0
 
     createEnemies()
+
+    cannon_o = Cannon:new()
+    cannon_o:setAnimator(animator_list['cannon'])
+    cannon_o:setXY(p_x * size_xy / 2, p_y * size_xy)
+    cannon_o:setState(true)
 end
 
 function reset_game()

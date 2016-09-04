@@ -10,7 +10,6 @@ require 'game_update'
 require 'game_load'
 require 'game_lost'
 require 'game_draw'
-require 'bullet'
 
 function love.load()
     game_load()
@@ -59,4 +58,5 @@ function key_event()
     orientation['left'] = love.keyboard.isDown('left')
     orientation['right'] = love.keyboard.isDown('right')
 end
+
 

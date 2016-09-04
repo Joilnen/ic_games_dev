@@ -9,3 +9,5 @@ function show_pause()
     love.graphics.setFont(font1)
     love.graphics.print('PAUSA, vai arregar ?!', width / 2 - 150, height/2)
 end
+
+

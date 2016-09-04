@@ -1,3 +1,4 @@
+require 'bullet'
 
 Cannon = {
     animator = nil,
@@ -54,7 +55,7 @@ function Cannon:shoot()
     if cannon_bullet == nil then
         cannon_bullet =  Bullet:new()
         cannon_bullet:setAnimator(animator_list['cannon_bullet'])
-        cannon_bullet.setXY(self.x * size_xy / 2, p_y * size_yx - 100)
+        cannon_bullet:setXY(self.x * size_xy / 2, p_y * size_xy - 100)
     end
 end
 

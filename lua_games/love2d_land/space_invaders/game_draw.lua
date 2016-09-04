@@ -1,5 +1,6 @@
 function shoot()
-
+    love.graphics.print('Shooting', 200, 0)
+    cannon:shoot()
 end
 
 function game_draw()
@@ -20,6 +21,7 @@ function game_draw()
     animator_list['cannon']:draw(enemies, p_x * size_xy / 2, p_y * size_xy);
     -- animator_list['bullet_1']:draw(enemies, p_x * size_xy / 2, p_y * size_xy - 100);
     -- animator_list['bullet_2']:draw(enemies, p_x * size_xy / 2 + 100, p_y * size_xy - 100);
+    cannon_o:draw()
     if cannon_bullet then
         local a,l = cannon_bullet.getXY()
         if l ==  3 then
@@ -31,9 +33,6 @@ function game_draw()
         end
     end
 
-    if orientation['shot'] then
-        love.graphics.print('Shooting', 200, 0)
-    end
 
     if orientation['left'] then
         p_x = p_x - 1
