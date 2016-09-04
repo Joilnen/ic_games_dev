@@ -10,7 +10,7 @@ require 'game_update'
 require 'game_load'
 require 'game_lost'
 require 'game_draw'
-require 'bullet_list'
+require 'bullet'
 
 function love.load()
     game_load()
@@ -45,17 +45,18 @@ function love.update(dt)
         game_update()
         time_lapse =  dt
     end
-    time_lapse = time_lapse + dt
 
     for k, v in pairs(animator_list) do
         animator_list[k]:update(dt)
     end
 
-    if love.keyboard.isDown('lctrl') then
-        orientation['shot'] = true
-    else
-        orientation['shot'] = nil
-    end
+    key_event()
+    time_lapse = time_lapse + dt
 end
 
+function key_event()
+    orientation['shot'] = love.keyboard.isDown('lctrl')
+    orientation['left'] = love.keyboard.isDown('left')
+    orientation['right'] = love.keyboard.isDown('right')
+end
 

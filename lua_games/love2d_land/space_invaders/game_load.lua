@@ -1,5 +1,6 @@
-require 'enemy_list'
-require 'bullet_list'
+require 'enemy'
+require 'bullet'
+require 'list'
 
 local anim = require 'anim8'
 
@@ -17,20 +18,21 @@ function setAnimator()
     animator_list['cannon'] = anim.newAnimation(g('1-1', 2), 0.1)
     animator_list['bullet_1'] = anim.newAnimation(g('2-3', 2), 0.1)
     animator_list['bullet_2'] = anim.newAnimation(g('4-5', 2), 0.1)
-    animator_list['bullet_cannon'] = anim.newAnimation(g('6-6', 2), 0.1)
+    animator_list['cannon_bullet'] = anim.newAnimation(g('6-6', 2), 0.1)
 end
 
 function createEnemies()
+
     local count_x = 110
     local count_y = 120
 
-    el = EnemyList:new{ count_list = 1 }
+    el = List:new { count_list = 1 }
 
     for i = 1, 11 do
         local e = Enemy:new()
         e:setAnimator(animator_list['en_1'])
         e:setXY(count_x, count_y)
-        el:addEnemy(e)
+        el:add(e)
         count_x = count_x + 50
     end
     count_x = 110
@@ -41,7 +43,7 @@ function createEnemies()
             local e = Enemy:new()
             e:setAnimator(animator_list['en_2'])
             e:setXY(count_x, count_y)
-            el:addEnemy(e)
+            el:add(e)
             count_x = count_x + 50
         end
         count_x = 110
@@ -53,26 +55,15 @@ function createEnemies()
             local e = Enemy:new()
             e:setAnimator(animator_list['en_3'])
             e:setXY(count_x, count_y)
-            el:addEnemy(e)
+            el:add(e)
             count_x = count_x + 50
         end
         count_x = 110
         count_y = count_y + 40
     end
 
-    -- print("p_x * size_xy / 2", p_x * size_xy / 2)
-    -- print("p_y * size_xy ", p_y * size_xy)
-    animator_list['cannon']:draw(enemies, p_x * size_xy / 2, p_y * size_xy);
-    animator_list['bullet_1']:draw(enemies, p_x * size_xy / 2, p_y * size_xy - 100);
-    animator_list['bullet_2']:draw(enemies, p_x * size_xy / 2 + 100, p_y * size_xy - 100);
-    animator_list['bullet_cannon']:draw(enemies, p_x * size_xy / 2 + 200, p_y * size_xy - 100);
-
-    if orientation['shot'] then
-        love.graphics.print('Shooting', 200, 0)
-    end
 
     love.graphics.setFont(score_font)
-    love.graphics.print(score, 10, 0)
 
     if orientation['shot'] then shoot() end
 end

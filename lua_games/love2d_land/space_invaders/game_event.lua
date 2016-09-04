@@ -1,4 +1,5 @@
 function change_orientation(k)
+
     if k == 'left' then orientation['right'] = nil end
     if k == 'right' then orientation['left'] = nil end
 
@@ -13,9 +14,7 @@ function treat_keyboard(k)
         paused_flag = not paused_flag
     end
 
-    if k == 'escape' then
-        love.event.quit()
-    end
+    if k == 'escape' then love.event.quit() end
 
     change_orientation(k)
 end
