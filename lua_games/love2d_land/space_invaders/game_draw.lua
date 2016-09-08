@@ -23,17 +23,12 @@ function game_draw()
     -- animator_list['bullet_2']:draw(enemies, p_x * size_xy / 2 + 100, p_y * size_xy - 100);
     cannon_o:setXY(p_x * size_xy / 2, p_y * size_xy)
     cannon_o:draw()
-    if cannon_bullet then
-        local a,l = cannon_bullet:getXY()
-        if l ==  3 then
-            cannon_bullet = nil
-        else
-            cannon_bullet:setXY(p_x * size_xy / 2, p_y * size_xy - 100)
-            cannon_bullet:draw()
-            p_y = p_y - 1
-        end
+    if cannon_bullet ~= nil then
+        cannon_bullet:setXY(c_x * size_xy / 2, c_y * size_xy - 100)
+        cannon_bullet:draw()
+        c_y = c_y - 1
+        if c_y < 3 then cannon_bullet = nil end
     end
-
 
     if orientation['left'] then
         p_x = p_x - 1

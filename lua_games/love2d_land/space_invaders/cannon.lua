@@ -57,6 +57,7 @@ function Cannon:shoot()
         cannon_bullet:setAnimator(animator_list['cannon_bullet'])
         cannon_bullet:setState(true)
         cannon_bullet:setXY(self.x * size_xy / 2, p_y * size_xy - 100)
+        c_x, c_y = p_x, p_y
     end
 end
 
