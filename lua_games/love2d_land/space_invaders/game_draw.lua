@@ -30,6 +30,7 @@ function game_draw()
         else
             cannon_bullet:setXY(p_x * size_xy / 2, p_y * size_xy - 100)
             cannon_bullet:draw()
+            p_y = p_y - 1
         end
     end
 
