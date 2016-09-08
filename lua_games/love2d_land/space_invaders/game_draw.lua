@@ -1,6 +1,6 @@
 function shoot()
     love.graphics.print('Shooting', 200, 0)
-    cannon:shoot()
+    cannon_o:shoot()
 end
 
 function game_draw()
@@ -23,7 +23,7 @@ function game_draw()
     -- animator_list['bullet_2']:draw(enemies, p_x * size_xy / 2 + 100, p_y * size_xy - 100);
     cannon_o:draw()
     if cannon_bullet then
-        local a,l = cannon_bullet.getXY()
+        local a,l = cannon_bullet:getXY()
         if l ==  3 then
             cannon_bullet = nil
         else

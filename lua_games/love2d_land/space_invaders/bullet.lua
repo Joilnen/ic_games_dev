@@ -10,6 +10,7 @@ function Bullet:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.x, self.y = o.x, o.y
     return o
 end
 
