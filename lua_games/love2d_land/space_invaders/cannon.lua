@@ -55,6 +55,7 @@ function Cannon:shoot()
     if cannon_bullet == nil then
         cannon_bullet =  Bullet:new()
         cannon_bullet:setAnimator(animator_list['cannon_bullet'])
+        cannon_bullet:setState(true)
         cannon_bullet:setXY(self.x * size_xy / 2, p_y * size_xy - 100)
     end
 end
