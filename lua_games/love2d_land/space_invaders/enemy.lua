@@ -20,8 +20,17 @@ function Enemy:getAnimator()
     return self.animator
 end
 
+function Enemy:setInitXY(a, b)
+    self.init_x, self.init_y = a, b
+    self.x, self.y = self.init_x, self.init_y
+end
+
 function Enemy:setXY(x, y)
     self.x, self.y = x, y
+end
+
+function Enemy:getXY()
+    return {self.x, self.y}
 end
 
 function Enemy:draw()
@@ -37,15 +46,15 @@ function Enemy:getLineToShoot()
 end
 
 function Enemy:incX()
-    self.x = self.x + 1
+    self.x = self.x + 1 * size_xy
 end
 
 function Enemy:incY() 
-    self.y = self.y + 1
+    self.y = self.y + 1 * size_xy
 end
 
 function Enemy:resetXY()
-    self.x, self.y = 110, 120
+    self.x, self.y = self.init_x, self.init_y
 end
 
 

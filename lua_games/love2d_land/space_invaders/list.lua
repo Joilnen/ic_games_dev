@@ -19,4 +19,9 @@ function List:getList()
     return self.l
 end
 
+function List:resetXY()
+    for f = 1, #self.l do
+        self.l[f]:resetXY()
+    end
+end
 

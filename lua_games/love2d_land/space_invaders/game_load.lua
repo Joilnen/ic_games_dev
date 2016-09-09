@@ -41,7 +41,7 @@ function createEnemies()
     for i = 1, 11 do
         local e = Enemy:new()
         e:setAnimator(animator_list['en_1'])
-        e:setXY(count_x, count_y)
+        e:setInitXY(count_x, count_y)
         el:add(e)
         count_x = count_x + size_xy * 3
     end
@@ -52,7 +52,7 @@ function createEnemies()
         for i = 1, 11 do
             local e = Enemy:new()
             e:setAnimator(animator_list['en_2'])
-            e:setXY(count_x, count_y)
+            e:setInitXY(count_x, count_y)
             el:add(e)
             count_x = count_x + size_xy * 3
         end
@@ -64,7 +64,7 @@ function createEnemies()
         for i = 1, 11 do
             local e = Enemy:new()
             e:setAnimator(animator_list['en_3'])
-            e:setXY(count_x, count_y)
+            e:setInitXY(count_x, count_y)
             el:add(e)
             count_x = count_x + size_xy * 3
         end
