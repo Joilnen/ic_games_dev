@@ -1,6 +1,6 @@
 function shoot()
     love.graphics.print('Shooting', 200, 0)
-    cannon_o:shoot()
+    cannon:shoot()
 end
 
 function game_draw()
@@ -16,13 +16,8 @@ function game_draw()
         a[i]:draw()
     end
 
-    -- print("p_x * size_xy / 2", p_x * size_xy / 2)
-    -- print("p_y * size_xy ", p_y * size_xy)
-    -- animator_list['cannon']:draw(enemies, p_x * size_xy / 2, p_y * size_xy)
-    -- animator_list['bullet_1']:draw(enemies, p_x * size_xy / 2, p_y * size_xy - 100);
-    -- animator_list['bullet_2']:draw(enemies, p_x * size_xy / 2 + 100, p_y * size_xy - 100);
-    cannon_o:setXY(p_x * size_xy / 2, p_y * size_xy)
-    cannon_o:draw()
+    cannon:setXY(p_x * size_xy / 2, p_y * size_xy)
+    cannon:draw()
     if cannon_bullet ~= nil then
         cannon_bullet:setXY(c_x * size_xy / 2, c_y * size_xy - 100)
         cannon_bullet:draw()

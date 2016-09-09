@@ -43,10 +43,10 @@ function createEnemies()
         e:setAnimator(animator_list['en_1'])
         e:setXY(count_x, count_y)
         el:add(e)
-        count_x = count_x + 50
+        count_x = count_x + size_xy * 3
     end
     count_x = 110
-    count_y = count_y + 40
+    count_y = count_y + 2 * size_xy
 
     for a = 1, 2 do
         for i = 1, 11 do
@@ -54,10 +54,10 @@ function createEnemies()
             e:setAnimator(animator_list['en_2'])
             e:setXY(count_x, count_y)
             el:add(e)
-            count_x = count_x + 50
+            count_x = count_x + size_xy * 3
         end
         count_x = 110
-        count_y = count_y + 40
+        count_y = count_y + 2 * size_xy
     end
 
     for a = 1, 2 do
@@ -66,10 +66,10 @@ function createEnemies()
             e:setAnimator(animator_list['en_3'])
             e:setXY(count_x, count_y)
             el:add(e)
-            count_x = count_x + 50
+            count_x = count_x + size_xy * 3
         end
         count_x = 110
-        count_y = count_y + 40
+        count_y = count_y + 2 * size_xy
     end
 
     love.graphics.setFont(score_font)
@@ -106,8 +106,6 @@ function game_load()
     figs_dir = 'figs/'
 
     love.window.setTitle("Space Invaders v1.0")
-    -- border = love.graphics.newImage(figs_dir .. 'border.png')
-    cannon = love.graphics.newImage(figs_dir .. 'sn1.png')
     loadAssets()
     setAnimator()
 
@@ -125,10 +123,10 @@ function game_load()
 
     createEnemies()
 
-    cannon_o = Cannon:new()
-    cannon_o:setAnimator(animator_list['cannon'])
-    cannon_o:setXY(p_x * size_xy / 2, p_y * size_xy)
-    cannon_o:setState(true)
+    cannon = Cannon:new()
+    cannon:setAnimator(animator_list['cannon'])
+    cannon:setXY(p_x * size_xy / 2, p_y * size_xy)
+    cannon:setState(true)
 end
 
 function reset_game()
