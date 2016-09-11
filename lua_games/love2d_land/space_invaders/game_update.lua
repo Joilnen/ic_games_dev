@@ -8,11 +8,14 @@ function game_update()
     end
 
     local l = el:getList()
+::continue::
     for i = 1, #l do
-        l[i]:incY()
         if l[1]:getXY()[2] > 580 then
             for f = 1, #l do l[f]:resetXY() end
+            goto continue
         end
+
+        l[i]:incY()
     end
 end
 
