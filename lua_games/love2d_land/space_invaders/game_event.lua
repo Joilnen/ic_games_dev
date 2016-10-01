@@ -4,7 +4,6 @@ function change_orientation(k)
     if k == 'right' then orientation['left'] = nil end
 
     orientation[k] = true
-
 end
 
 function treat_keyboard(k)
