@@ -9,9 +9,9 @@ animator_list = {}
 function loadAssets(cannon, barries)
     enemies = love.graphics.newImage(figs_dir .. 'enemies.png')
 
-    -- Isso foi muito fooooda por mim mesmo heh
+    -- Isso foi muito fooooda por mim mesmo heh 
     enemies:getData():mapPixel(
-        function (x, y, r, g, b, a)
+        function (x, y, r, g, b, a) 
             if r == 0 and g == 0 and b == 0 then
                 a = 0
             end
@@ -29,7 +29,6 @@ function setAnimator()
     animator_list['bullet_1'] = anim.newAnimation(g('2-3', 2), 0.1)
     animator_list['bullet_2'] = anim.newAnimation(g('4-5', 2), 0.1)
     animator_list['cannon_bullet'] = anim.newAnimation(g('6-6', 2), 0.1)
-    animator_list['enemy_bullet'] = anim.newAnimation(g('6-6', 2), 0.1)
 end
 
 function createEnemies()

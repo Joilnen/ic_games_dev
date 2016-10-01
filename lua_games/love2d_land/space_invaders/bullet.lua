@@ -3,6 +3,7 @@ Bullet = {
     animator = nil,
     x, y,
     lineToShoot,
+    on
 }
 
 function Bullet:new(o)
@@ -27,10 +28,6 @@ end
 
 function Bullet:getXY()
     return {self.x, self.y}
-end
-
-function Bullet:ngetXY()
-    return {x = self.x,y = self.y}
 end
 
 function Bullet:setLineToShoot(a)
@@ -58,3 +55,5 @@ end
 function Bullet:getState()
     return self.on
 end
+
+

@@ -1,32 +1,9 @@
-test = "false"
-shr = 10 -- SHOOTING RANGE
 function check_if_lost(x, y, list)
 
 end
 
 local x_step = 1
 local x_d = 0
-
-function contains (rect,point)
-								if point.y >= rect.y and point.y >= rect.h then
-																if point.x >= rect.x and point.x <= rect.w then
-																								return true
-																else
-																								return false
-																end
-								else
-																return false
-								end
-end
-
-function checkBulletCollision (rect,pbullet)
-								if contains (rect,pbullet) then
-																print ("A bullet collided!")
-																return true
-								else
-																return false
-								end
-end
 
 function game_update()
     if paused_flag then
@@ -49,13 +26,6 @@ function game_update()
             x_step = 1
             l[i]:incY()
         end
-
-								local oposx = (p_x/100) * 800;
-
-								if oposx >= (l[i]:getXY()[1] - 10)  and
-											oposx <= (l[i]:getXY()[1] + 10) 	then
-											l[i]:shoot ()
-								end
     end
 end
 
