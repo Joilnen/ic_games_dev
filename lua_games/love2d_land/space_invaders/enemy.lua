@@ -30,7 +30,11 @@ function Enemy:setXY(x, y)
 end
 
 function Enemy:getXY()
-    return {self.x, self.y}
+    return {self.x,self.y}
+end
+
+function Enemy:ngetXY()
+    return { x = self.x,y = self.y}
 end
 
 function Enemy:draw()
@@ -49,12 +53,31 @@ function Enemy:incX()
     self.x = self.x + 1 * size_xy
 end
 
-function Enemy:incY() 
+function Enemy:incY()
     self.y = self.y + 1 * size_xy
 end
 
 function Enemy:resetXY()
     self.x, self.y = self.init_x, self.init_y
 end
+
+function Enemy:shoot()
+    if enemy_bullet == nil then
+        enemy_bullet = Bullet:new()
+        enemy_bullet:setAnimator(animator_list['enemy_bullet'])
+        enemy_bullet:setState(true)
+        enemy_bullet:setXY(self.x, self.y)
+--        ec_x, ec_y = self.x, p_y
+    end
+end
+
+function Enemy:getBoundingBox()
+								-- I am assuming that alien size is 32x32
+								-- But we should get this information instead of trying to guess
+								local dummyW = self.x + 32
+								local dummyH = self.y + 32
+								return {x = self.x, y = self.y, w = dummyW, h = dummyH}
+end
+
 
 
