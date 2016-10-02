@@ -31,7 +31,9 @@ local function draw_enemy_bullet()
     if enemy_bullet ~= nil then
         local bp = enemy_bullet:getXY()
         enemy_bullet:setXY(bp[1], bp[2] + 10)
-        checkBulletCollision (cannon:getBoundingBox(), enemy_bullet:ngetXY())
+        if checkBulletCollision (cannon:getBoundingBox(), enemy_bullet:ngetXY()) then
+            print('enemy_bullet against cannon')
+        end
         enemy_bullet:draw()
         if enemy_bullet:getXY()[2] > 797 then enemy_bullet = nil end
     else
@@ -60,6 +62,13 @@ local function draw_enemy_list()
     end
 end
 
+local function draw_cannon()
+    if cannon ~= nil then
+        cannon:setXY(p_x * size_xy / 2, p_y * size_xy)
+        cannon:draw()
+    end
+end
+
 function game_draw()
 
     if lost_flag then
@@ -68,8 +77,7 @@ function game_draw()
         show_pause()
     end
 
-    cannon:setXY(p_x * size_xy / 2, p_y * size_xy)
-    cannon:draw()
+    draw_cannon()
     draw_cannon_bullet()
     draw_enemy_bullet()
     update_cannon_position()

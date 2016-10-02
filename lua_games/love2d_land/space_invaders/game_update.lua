@@ -19,7 +19,7 @@ end
 
 function checkBulletCollision (rect, pbullet)
     if contains (rect,pbullet) then
-       print ("A bullet collided!")
+       -- print ("A bullet collided!")
        return true
     else
        return false
