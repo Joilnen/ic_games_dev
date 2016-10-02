@@ -29,12 +29,11 @@ end
 
 local function draw_enemy_bullet()
     if enemy_bullet ~= nil then
-        local bulletposition = enemy_bullet:getXY()
-        bulletposition[2] = bulletposition[2] + 10
-        enemy_bullet:setXY(bulletposition[1], bulletposition[2])
+        local bp = enemy_bullet:getXY()
+        enemy_bullet:setXY(bp[1], bp[2] + 10)
         -- checkBulletCollision (cannon:getBoundingBox(), enemy_bullet:ngetXY())
-        enemy_bullet:draw()
-        if bulletposition[2] > 797 then enemy_bullet = nil end
+        -- enemy_bullet:draw()
+        if enemy_bullet:getXY()[2] > 797 then enemy_bullet = nil end
     else
         love.graphics.print('No enemy_bullet ', 300, 20)
     end
@@ -73,7 +72,7 @@ function game_draw()
     cannon:setXY(p_x * size_xy / 2, p_y * size_xy)
     cannon:draw()
     draw_cannon_bullet()
-    -- draw_enemy_bullet()
+    draw_enemy_bullet()
     update_cannon_position()
     draw_enemy_list()
 

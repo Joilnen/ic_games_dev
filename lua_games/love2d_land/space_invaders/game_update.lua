@@ -5,7 +5,7 @@ end
 local x_step = 1
 local x_d = 0
 
-function contains (rect, point)
+local function contains (rect, point)
     if point.y >= rect.y and point.y >= rect.h then
         if point.x >= rect.x and point.x <= rect.w then
             return true
