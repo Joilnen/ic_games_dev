@@ -33,6 +33,10 @@ function Enemy:getXY()
     return {self.x, self.y}
 end
 
+function Enemy:ngetXY()
+    return {x = self.x,y = self.y}
+end
+
 function Enemy:draw()
     self.animator:draw(enemies, self.x, self.y)
 end
@@ -60,7 +64,13 @@ end
 function Enemy:shoot()
     if enemy_bullet == nil then
         enemy_bullet = Bullet:new()
-        enemy_bullet:setAnimator(animator_list['enemy_bullet'])
+        math.randomseed(os.time())
+        local choose_bullet = math.random(1, 2)
+        if choose_bullet == 1 then
+            enemy_bullet:setAnimator(animator_list['bullet_1'])
+        else
+            enemy_bullet:setAnimator(animator_list['bullet_2'])
+        end
         enemy_bullet:setState(true)
         enemy_bullet:setXY(self.x, self.y)
 --        ec_x, ec_y = self.x, p_y
@@ -74,6 +84,5 @@ function Enemy:getBoundingBox()
     local dummyH = self.y + 32
     return {x = self.x, y = self.y, w = dummyW, h = dummyH}
 end
-
 
 

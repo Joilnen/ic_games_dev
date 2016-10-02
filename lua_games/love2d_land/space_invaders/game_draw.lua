@@ -1,5 +1,5 @@
 local function shoot()
-    love.graphics.print('Shooting', 200, 0)
+    love.graphics.print('Cannon shooting', 200, 0)
     cannon:shoot()
 end
 
@@ -13,8 +13,8 @@ local function draw_cannon_bullet()
     if cannon_bullet ~= nil then
         for i = 1, #a do
             if checkBulletCollision (a[i]:getBoundingBox(), cannon_bullet:ngetXY()) then
-                --cannon_bullet = nil
-                                                                                                        print ("Player bullet collided against alien")
+                -- cannon_bullet = nil
+                print ("Player bullet collided against alien")
             end
         end
     end
@@ -31,14 +31,13 @@ local function draw_enemy_bullet()
     if enemy_bullet ~= nil then
         local bp = enemy_bullet:getXY()
         enemy_bullet:setXY(bp[1], bp[2] + 10)
-        -- checkBulletCollision (cannon:getBoundingBox(), enemy_bullet:ngetXY())
-        -- enemy_bullet:draw()
+        checkBulletCollision (cannon:getBoundingBox(), enemy_bullet:ngetXY())
+        enemy_bullet:draw()
         if enemy_bullet:getXY()[2] > 797 then enemy_bullet = nil end
     else
         love.graphics.print('No enemy_bullet ', 300, 20)
     end
 end
-
 
 local function update_cannon_position()
     if orientation['left'] then

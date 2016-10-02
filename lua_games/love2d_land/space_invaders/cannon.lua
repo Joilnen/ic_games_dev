@@ -61,4 +61,16 @@ function Cannon:shoot()
     end
 end
 
+function Cannon:getBoundingBox()
+    --w should be x + w and h should be y + h
+    -- self.x should be (p_x/100) * WINDOW_WIDTH
+    local xaux = (p_x/100) * 800
+    local yaux = (p_y/100) * 800
+    -- I am assuming that player's cannon size is 32x32
+    -- But we should get this information instead of trying to guess
+    local dummyH = yaux + 32
+    local dummyW = xaux + 32
+    return {x = xaux, y = yaux, w = dummyW, h = dummyH}
+end
+
 
