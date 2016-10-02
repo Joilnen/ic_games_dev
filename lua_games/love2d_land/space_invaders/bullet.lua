@@ -30,6 +30,10 @@ function Bullet:getXY()
     return {self.x, self.y}
 end
 
+function Bullet:ngetXY()
+    return {x = self.x,y = self.y}
+end
+
 function Bullet:setLineToShoot(a)
     self.lineToShoot = a
 end
