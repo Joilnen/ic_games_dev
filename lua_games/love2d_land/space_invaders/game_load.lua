@@ -29,6 +29,7 @@ function setAnimator()
     animator_list['bullet_1'] = anim.newAnimation(g('2-3', 2), 0.1)
     animator_list['bullet_2'] = anim.newAnimation(g('4-5', 2), 0.1)
     animator_list['cannon_bullet'] = anim.newAnimation(g('6-6', 2), 0.1)
+    animator_list['explosion'] = anim.newAnimation(g('1-1', 3), 0.1)
 end
 
 function createEnemies()

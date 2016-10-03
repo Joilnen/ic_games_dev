@@ -20,6 +20,7 @@ end
 
 function cannon_shooted()
     love.graphics.print("Cannon shooted", 10, 10)
+    cannon:setAnimator(animator_list['explosion'])
 end
 
 function enemy_shooted()
