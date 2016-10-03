@@ -18,4 +18,11 @@ function treat_keyboard(k)
     change_orientation(k)
 end
 
+function cannon_shooted()
+    love.graphics.print("Cannon shooted", 10, 10)
+end
+
+function enemy_shooted()
+    love.graphics.print("Enemy shooted", 10, 60)
+end
 

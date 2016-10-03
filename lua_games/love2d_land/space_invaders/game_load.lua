@@ -97,7 +97,7 @@ function game_load()
     p_y = 32
 
     orientation = {
-        shot = nil,
+        shoot = nil,
         double_shot = nil,
         left = nil,
         right = nil

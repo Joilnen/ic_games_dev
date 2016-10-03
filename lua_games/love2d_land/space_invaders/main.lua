@@ -54,7 +54,7 @@ function love.update(dt)
 end
 
 function key_event()
-    orientation['shot'] = love.keyboard.isDown('lctrl')
+    orientation['shoot'] = love.keyboard.isDown('lctrl')
     orientation['left'] = love.keyboard.isDown('left')
     orientation['right'] = love.keyboard.isDown('right')
 end
