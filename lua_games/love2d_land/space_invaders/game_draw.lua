@@ -72,6 +72,16 @@ local function draw_cannon()
     end
 end
 
+local function pause_game()
+
+
+end
+
+local function lost_game()
+
+
+end
+
 local function check_pause_or_lost()
     if lost_flag then
         show_lost()
@@ -91,6 +101,7 @@ function game_draw()
     update_cannon_position()
     draw_enemy_list()
     get_shoot_event()
+    check_pause_or_lost()
 end
 
 

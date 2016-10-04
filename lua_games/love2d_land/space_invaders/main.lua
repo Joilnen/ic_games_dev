@@ -41,7 +41,9 @@ end
 
 function love.update(dt)
     if time_lapse > time_update_limit then 
-        game_update()
+        if lost_flag ~= true then
+            game_update()
+        end
         time_lapse =  dt
     end
 
