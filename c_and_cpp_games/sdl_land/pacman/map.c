@@ -156,7 +156,6 @@ static void move_player(GameMap *m) {
     unsigned short to = m->p.move;
 
     if(to == LEFT) {
-        printf("%c\n", m->t_map[m->pacman_pos.y][m->pacman_pos.x - 1]);
 
         if(m->pacman_pos.x && m->t_map[m->pacman_pos.y][m->pacman_pos.x - 1]  == ' ') {
            m->t_map[m->pacman_pos.y][m->pacman_pos.x - 1] = m->t_map[m->pacman_pos.y][m->pacman_pos.x];
@@ -194,7 +193,6 @@ static void move_player(GameMap *m) {
     }
     else if(to == RIGHT) {
 
-        printf("%c\n", m->t_map[m->pacman_pos.y][m->pacman_pos.x + 1]);
 
         if(m->t_map[m->pacman_pos.y][m->pacman_pos.x + 1]  == ' ') {
            m->t_map[m->pacman_pos.y][m->pacman_pos.x + 1] = m->t_map[m->pacman_pos.y][m->pacman_pos.x];
