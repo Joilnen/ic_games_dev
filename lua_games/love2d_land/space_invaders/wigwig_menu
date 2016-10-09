@@ -1,0 +1,7 @@
+@I
+@Fb
+@WIR -
+@WIM menu_draw(), game_menu.lua, goplay, tecla enter capturada em treat_keyboard
+menu ou game dentro de draw_game
+@WID menu_draw()
+

@@ -128,6 +128,8 @@ function game_load()
     cannon:setAnimator(animator_list['cannon'])
     cannon:setXY(p_x * size_xy / 2, p_y * size_xy)
     cannon:setState(true)
+
+    goplay = false
 end
 
 function reset_game()

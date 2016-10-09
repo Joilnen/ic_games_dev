@@ -4,3 +4,10 @@ Controls:
 UP DOWN LEFT RIGHT SPACE[pause and play again] ESC[exit]
 
 Joilnen
+
+TODO:
+    monte de coisas, pra agora menu basico
+    ajustar movimento dos inimigos
+    ajustar colisao com o canhao e implementar colisao com inimigo
+    por as barreiras ainda sem fisica
+

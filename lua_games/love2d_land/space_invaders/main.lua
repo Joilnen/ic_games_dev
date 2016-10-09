@@ -10,13 +10,20 @@ require 'game_update'
 require 'game_load'
 require 'game_lost'
 require 'game_draw'
+require 'game_menu'
 
 function love.load()
     game_load()
 end
 
 function love.draw()
-    game_draw()
+    -- TODO 
+    -- menu_draw()
+    if goplay == false then
+        menu_draw()
+    else
+        game_draw()
+    end
 end
 
 function love.keypressed(k)

@@ -10,7 +10,7 @@ function treat_keyboard(k)
     elseif not menu2_start then
       menu_start = true
       menu2_start = true
-      score=20
+      score = 20
       record_score()
     end
   

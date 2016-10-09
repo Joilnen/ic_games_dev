@@ -12,6 +12,7 @@ function treat_keyboard(k)
     end
 
     if k == 'escape' then love.event.quit() end
+    if k == 'return' then goplay = true end
 
     change_orientation(k)
 end
