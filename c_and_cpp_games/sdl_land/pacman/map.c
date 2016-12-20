@@ -321,7 +321,7 @@ void send_event(GameMap *m) {
 
 unsigned short check_colide_player(GameMap *m, enum move to) {
 
-    if (m->pacman_pos.y < 1 || m->pacman_pos.y > MAP_HEIGHT - 1 ||
+    if (m->pacman_pos.y < 1 || m->pacman_pos.y > MAP_HEIGHT - 2 ||
         m->pacman_pos.x < 1 || m->pacman_pos.x > MAP_WIDTH - 1)
             return 0;
     if (to == LEFT && m->t_map[m->pacman_pos.y][m->pacman_pos.x - 1] == 'o' ||
