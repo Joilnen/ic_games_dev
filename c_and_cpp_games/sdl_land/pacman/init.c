@@ -1,5 +1,6 @@
 #include "init.h"
 #include "map.h"
+#include "sound.h"
 
 void gamescreen_init(GameScreen *g) {
     if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER))

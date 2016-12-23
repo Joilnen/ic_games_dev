@@ -1,6 +1,8 @@
 #ifndef PACMAN_H
 #define PACMAN_H
 
+#include <SDL2/SDL.h>
+
 enum move { NONE, UP, DOWN, LEFT, RIGHT};
 
 typedef struct Pacman {

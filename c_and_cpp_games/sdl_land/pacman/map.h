@@ -24,6 +24,7 @@ typedef struct GameMap {
     unsigned short ghost_counter;
     unsigned short score_counter;
     GameScreen *screen;
+    struct Sound *sound;
 } GameMap;
 
 GameMap *create_map();
