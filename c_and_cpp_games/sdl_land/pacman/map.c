@@ -5,7 +5,6 @@
 #include "pacman.h"
 #include "map.h"
 #include "poslist.h"
-#include "sound.h" 
 
 GameMap *create_map() {
 
@@ -29,8 +28,6 @@ static void init_map_player(SDL_Renderer *r, GameMap *m) {
     m->p.dstRect.w = m->p.dstRect.h = 31;
     m->p.step = 16;
     m->p.move = NONE;
-
-    init_sound(m);
 }
 
 static void init_map_ghost(SDL_Renderer *r, GameMap *m) {
@@ -236,12 +233,12 @@ static void move_player(GameMap *m) {
         }
     }
     else if (to == UP) {
-        if (m->pacman_pos.y > 0 && m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x]  == ' ') {
+        if (m->pacman_pos.y && m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x]  == ' ') {
            m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x] = m->t_map[m->pacman_pos.y][m->pacman_pos.x];
            m->t_map[m->pacman_pos.y][m->pacman_pos.x] = ' ';
            // dec_ypos(&m->pacman_pos.y);
         }
-        else if(m->pacman_pos.y > 0 && m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x]  == '.') {
+        else if(m->pacman_pos.y && m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x]  == '.') {
            m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x] = m->t_map[m->pacman_pos.y][m->pacman_pos.x];
            m->t_map[m->pacman_pos.y][m->pacman_pos.x] = ' ';
            m->score_counter++;
@@ -249,21 +246,21 @@ static void move_player(GameMap *m) {
            // dec_ypos(&m->pacman_pos.y);
            printf("Ate pils\n");
         }
-        else if(m->pacman_pos.y > 0 && m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x]  == '*') {
+        else if(m->pacman_pos.y && m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x]  == '*') {
            m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x] = m->t_map[m->pacman_pos.y][m->pacman_pos.x];
            m->t_map[m->pacman_pos.y][m->pacman_pos.x] = ' ';
            m->score_counter += 10;
            // dec_ypos(&m->pacman_pos.y);
            printf("Ate big pils can eat ghosts\n");
         }
-        else if(m->pacman_pos.y > 0 && m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x]  == 'Y') {
+        else if(m->pacman_pos.y && m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x]  == 'Y') {
            m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x] = m->t_map[m->pacman_pos.y][m->pacman_pos.x];
            m->t_map[m->pacman_pos.y][m->pacman_pos.x] = ' ';
            m->score_counter += 30;
            // dec_ypos(&m->pacman_pos.y);
            printf("Ate fruit\n");
         }
-        else if(m->pacman_pos.y > 0 && m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x]  == 'G') {
+        else if(m->pacman_pos.y && m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x]  == 'G') {
            m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x] = m->t_map[m->pacman_pos.y][m->pacman_pos.x];
            m->t_map[m->pacman_pos.y][m->pacman_pos.x] = ' ';
            m->score_counter += 30;

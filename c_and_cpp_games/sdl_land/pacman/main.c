@@ -13,6 +13,7 @@
 #include "update.h"
 #include "timer.h"
 #include "defs.h"
+#include "sound.h" 
 
 int main()
 {
@@ -30,6 +31,7 @@ int main()
 
     GameMap *map = create_map();
     init_map(g.renderer, map, &g);
+    init_sound(map);
 
     lasttime = nowtime = get_elapsed_time();
     while(run) {
