@@ -34,17 +34,18 @@ static void init_map_ghost(SDL_Renderer *r, GameMap *m) {
 
     SDL_Surface *t = SDL_LoadBMP("ghost.bmp");
     int i;
+
     for (i = 0; i < m->ghost_counter; i++) {
         m->g[i].sprite = SDL_CreateTextureFromSurface(r, t);
         m->g[i].srcRect.x = m->ghost_born_pos.x * 32;
         m->g[i].srcRect.y = m->ghost_born_pos.y * 32;
         m->g[i].srcRect.w = m->g[i].srcRect.h = 31;
     }
+
     SDL_FreeSurface(t);
 }
 
 void draw_map_player(SDL_Renderer *r, GameMap *m) {
-
 
 }
 
@@ -129,7 +130,6 @@ void init_map(SDL_Renderer *r, GameMap *m, GameScreen *screen) {
 }
 
 static void inc_xpos(unsigned short *p) {
-
     if (*p == MAP_WIDTH)
         *p = 0;
     else
@@ -137,7 +137,6 @@ static void inc_xpos(unsigned short *p) {
 }
 
 static void dec_xpos(unsigned short *p) {
-
     if (*p == 0)
         *p = MAP_WIDTH;
     else
@@ -320,9 +319,15 @@ void send_event(GameMap *m) {
 
 unsigned short check_colide_player(GameMap *m, enum move to) {
 
-    if ((to == UP && m->pacman_pos.y < 1) || (to == DOWN && m->pacman_pos.y > MAP_HEIGHT - 2) ||
-        (to == LEFT && m->pacman_pos.y < 1) || (to == RIGHT && m->pacman_pos.x > MAP_WIDTH - 1))
-            return 0;
+    if (to == UP && m->pacman_pos.y < 1)
+        m->pacman_pos.y = MAP_HEIGHT - 2;
+    else if (to == DOWN && m->pacman_pos.y > MAP_HEIGHT - 2)
+        m->pacman_pos.y = 1;
+    else if (to == LEFT && m->pacman_pos.x < 1)
+        m->pacman_pos.x = MAP_WIDTH -1;
+    else if(to == RIGHT && m->pacman_pos.x > MAP_WIDTH - 1)
+         m->pacman_pos.x = 1;
+
     if (to == LEFT && m->t_map[m->pacman_pos.y][m->pacman_pos.x - 1] == 'o' ||
        to == RIGHT && m->t_map[m->pacman_pos.y][m->pacman_pos.x + 1] == 'o' ||
        to == UP && m->t_map[m->pacman_pos.y - 1][m->pacman_pos.x] == 'o' ||
