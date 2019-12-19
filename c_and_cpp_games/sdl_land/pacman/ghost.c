@@ -12,13 +12,12 @@ Ghost *create_ghost() {
 }
 
 void init_ghost(SDL_Renderer *r, Ghost *s) {
-    s->rect.x = 300;
-    s->rect.y = 200;
-    s->rect.w = 16;
-    s->rect.h = 16;
-    s->step = 16;
+    s->p.rect.x = 300;
+    s->p.rect.y = 200;
+    s->p.rect.w = 16;
+    s->p.rect.h = 16;
+    s->p.step = 16;
 }
-
 
 
 

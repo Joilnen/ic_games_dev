@@ -6,8 +6,7 @@
 #include "ghost.h"
 #include "map.h"
 
-void update(SDL_Renderer*, GameMap *);
-void update_(SDL_Renderer*, Pacman *, Ghost *);
+void update(GameMap *m);
 
 #endif
 

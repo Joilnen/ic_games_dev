@@ -17,10 +17,10 @@
 
 int main()
 {
-    GameScreen g;
     unsigned int run = 1;
     Uint32 lasttime, nowtime, dt = DT_ELAPSED_LIMIT;
 
+    GameScreen g;
     gamescreen_init(&g);
 
     Pacman *pacman = create_pacman();

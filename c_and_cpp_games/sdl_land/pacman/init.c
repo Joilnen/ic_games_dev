@@ -7,7 +7,7 @@ void gamescreen_init(GameScreen *g) {
         exit(-1);
     atexit(SDL_Quit);
 
-    g->window = SDL_CreateWindow("Snake",
+    g->window = SDL_CreateWindow("Pacman",
             SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
             WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
 
@@ -22,4 +22,6 @@ void gamescreen_init(GameScreen *g) {
     SDL_RenderClear(g->renderer);
     SDL_RenderPresent(g->renderer);
 }
+
+
 

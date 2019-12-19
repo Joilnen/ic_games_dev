@@ -1,13 +1,10 @@
 #ifndef GOST_H
 #define GOST_H
 
+#include "sprite.h"
+
 typedef struct Ghost {
-    int x, y;
-    SDL_Rect rect;
-    SDL_Rect srcRect, dstRect;
-    SDL_Texture *sprite;
-    unsigned int step;
-    unsigned short l_count, c_count;
+    struct Sprite p;
 } Ghost;
 
 Ghost *create_ghost();

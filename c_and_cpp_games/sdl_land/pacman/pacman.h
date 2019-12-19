@@ -2,16 +2,11 @@
 #define PACMAN_H
 
 #include <SDL2/SDL.h>
+#include "sprite.h"
 
-enum move { NONE, UP, DOWN, LEFT, RIGHT};
 
 typedef struct Pacman {
-    SDL_Rect rect;
-    enum move move;
-    SDL_Rect srcRect, dstRect;
-    SDL_Texture *sprite;
-    unsigned short step;
-    unsigned short l_count, c_count;
+    Sprite p;
 } Pacman;
 
 Pacman *create_pacman();

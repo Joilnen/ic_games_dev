@@ -4,7 +4,7 @@
 static int _init(GameMap *g) {
     g->sound = (struct Sound *) malloc(sizeof (struct Sound));
 
-    if(Mix_Init(MIX_INIT_MOD | MIX_INIT_OGG) & (MIX_INIT_MOD | MIX_INIT_OGG))
+    if(Mix_Init(MIX_INIT_MOD) & MIX_INIT_MOD)
         printf("Mix inicializado legal %d decoders\n", Mix_GetNumMusicDecoders());
     else
         printf("Mix nao inicializado %s\n", Mix_GetError());
@@ -14,7 +14,7 @@ static int _init(GameMap *g) {
     Mix_AllocateChannels(2);
     g->sound->music = Mix_LoadMUS("sounds/pop_refrao.xm");
     if(g->sound->music) {
-        Mix_PlayMusic(g->sound->music, -1);
+        // Mix_PlayMusic(g->sound->music, -1);
     }
     else {
         printf("Mix musica nao carregou %s\n", Mix_GetError());
