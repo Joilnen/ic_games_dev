@@ -14,7 +14,7 @@ static int _init(GameMap *g) {
     Mix_AllocateChannels(2);
     g->sound->music = Mix_LoadMUS("sounds/pop_refrao.xm");
     if(g->sound->music) {
-        // Mix_PlayMusic(g->sound->music, -1);
+        Mix_PlayMusic(g->sound->music, -1);
     }
     else {
         printf("Mix musica nao carregou %s\n", Mix_GetError());
