@@ -21,9 +21,24 @@ static void draw_pacman(SDL_Renderer *r, GameMap *m) {
         SDL_RenderCopyEx(r, m->p.p.sprite, &m->p.p.srcRect, &m->p.p.dstRect, -90, NULL, SDL_FLIP_NONE);
 }
 
-static void draw_ghost(SDL_Renderer *r, Ghost *s) {
-    // SDL_SetRenderDrawColor(r, 255, 255, 0, 255);
-    // SDL_RenderFillRect(r, &s->rect);
+static void draw_ghost(SDL_Renderer *r, GameMap *m) {
+    m->g[0].p.srcRect.y = 0;
+    m->g[0].p.srcRect.w = m->g[0].p.srcRect.h = 32;
+    /* m->p.p.srcRect.x = (m->p.p.srcRect.x)? 0: 32; this is in update because timer lapse */
+    m->g[0].p.dstRect.x = m->g[0].p.x * 32; m->g[0].p.dstRect.y = m->g[0].p.y * 32;
+    m->g[0].p.dstRect.w = m->g[0].p.dstRect.h = 32;
+
+    SDL_RenderCopy(r, m->g[0].p.sprite, &m->g[0].p.srcRect, &m->g[0].p.dstRect);
+    /****
+    if(m->p.p.move == LEFT || m->p.p.move == NONE)
+        SDL_RenderCopy(r, m->p.p.sprite, &m->p.p.srcRect, &m->p.p.dstRect);
+    else if(m->p.p.move == RIGHT)
+        SDL_RenderCopyEx(r, m->p.p.sprite, &m->p.p.srcRect, &m->p.p.dstRect, 0, NULL, SDL_FLIP_HORIZONTAL);
+    else if(m->p.p.move == UP)
+        SDL_RenderCopyEx(r, m->p.p.sprite, &m->p.p.srcRect, &m->p.p.dstRect, 90, NULL, SDL_FLIP_NONE);
+    else if(m->p.p.move == DOWN)
+        SDL_RenderCopyEx(r, m->p.p.sprite, &m->p.p.srcRect, &m->p.p.dstRect, -90, NULL, SDL_FLIP_NONE);
+    ****/
 }
 
 void draw_map(SDL_Renderer *r, GameMap *m) {
@@ -55,8 +70,9 @@ void draw_map(SDL_Renderer *r, GameMap *m) {
                 SDL_RenderCopy(r, m->big_pils, &srect, &drect);
             else if(*t == 'G') {
                 // SDL_RenderCopy(r, m->ghost, &srect, &drect);
-                m->ghost_born_pos.x = l_count;
-                m->ghost_born_pos.y = c_count;
+                m->g[0].p.x = l_count;
+                m->g[0].p.y = c_count;
+                draw_ghost(r, m);
             }
             else if(*t == 'Y')
                 SDL_RenderCopy(r, m->special, &srect, &drect);
