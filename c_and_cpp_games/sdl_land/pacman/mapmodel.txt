@@ -2,7 +2,7 @@
 ; P player, G ghost and Y speci
 =34
 ooooooooooooo# . #oooooo#.#oooo
- .....P....... Y ............* 
+ .....P....... Y ......G.....* 
 oooo# #ooooooo# #ooooooo# #oooo
     I.I       I.I       I.I 
     I.I       I.I       I.I 
@@ -10,12 +10,12 @@ oooo# #ooooooo# #ooooooo# #oooo
     I.I       I.I       I.I 
     I.I     #o#.#o#     I.I 
 oooo# #ooooo#..G..#ooooo# #oooo
- ... Y ..*..I.GGG.I..*.. Y ... 
-oooo# #ooooo#..G..#ooooo# #oooo
+ .G..Y...*..I.   .I..*...Y.... 
+oooo# #ooooo#.....#ooooo# #oooo
     I.I     #o#.#o#     I.I 
     I*I       I*I       I*I 
     I.I       I.I       I.I 
     I.I      ##.##      I.I 
 oooo# #oooooo#   #ooooooooooooo
- .Y..........  Y  ..........Y. 
+ .Y..........  Y G..........Y. 
 ooooooooooooo#   #oooooo#.#oooo

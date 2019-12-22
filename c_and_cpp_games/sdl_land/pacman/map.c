@@ -36,12 +36,8 @@ static void init_map_ghost(SDL_Renderer *r, GameMap *m) {
     SDL_Surface *t = SDL_LoadBMP("ghost.bmp");
     int i;
 
-    for (i = 0; i < m->ghost_counter; i++) {
+    for (i = 0; i < m->ghost_counter; i++)
         m->g[i].p.sprite = SDL_CreateTextureFromSurface(r, t);
-        m->g[i].p.srcRect.x = m->ghost_born_pos.x * 32;
-        m->g[i].p.srcRect.y = m->ghost_born_pos.y * 32;
-        m->g[i].p.srcRect.w = m->g[i].p.srcRect.h = 31;
-    }
 
     SDL_FreeSurface(t);
 }
@@ -55,7 +51,7 @@ void init_map(SDL_Renderer *r, GameMap *m, GameScreen *screen) {
     unsigned short int count;
     char *tmp = NULL;
 
-    m->ghost_pos_count = 0;
+    m->ghost_counter = 5;
     if (!(f = fopen("mapmodel.txt", "r")))
         exit(-1);
 
@@ -112,22 +108,16 @@ void init_map(SDL_Renderer *r, GameMap *m, GameScreen *screen) {
     if (s == NULL)
         exit(-1);
     m->big_pils = SDL_CreateTextureFromSurface(r, s);
-
-    // s = SDL_LoadBMP("pacman.bmp");
-    // if (s == NULL)
-    //     exit(-1);
-    // m->pacman = SDL_CreateTextureFromSurface(r, s);
-
     SDL_FreeSurface(s);
 
     init_map_player(r, m);
-    for(count = 0; m->ghost_pos_count; count++)
-        init_map_ghost(r, m);
+    init_map_ghost(r, m);
+
     m->score_counter = 0;
 }
 
 void update_map(GameMap *m) {
-    /* move_player(m); */
+
     update(m);
     if (m->p.p.move != NONE)
         m->p.p.srcRect.x = (m->p.p.srcRect.x)? 0: 32;
