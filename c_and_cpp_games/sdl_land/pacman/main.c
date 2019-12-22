@@ -39,14 +39,9 @@ int main()
         SDL_SetRenderDrawColor(g.renderer, 0, 0, 0, 255);
         SDL_RenderClear(g.renderer);
         draw_map(g.renderer, map);
-        // draw_ghost(g.renderer, ghost);
-        // draw_pacman(g.renderer, pacman);
         SDL_RenderPresent(g.renderer);
         get_event(map, &run);
-        // get_event(pacman, &run);
         if(nowtime - lasttime > dt) {
-            /* update(g.renderer, pacman, ghost); */
-            /* update(g.renderer, map); */
             update_map(map);
             lasttime = nowtime;
         }
